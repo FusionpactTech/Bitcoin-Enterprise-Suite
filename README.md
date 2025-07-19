@@ -175,8 +175,8 @@ Security is our top priority. Please review our [Security Policy](./docs/securit
 
 ## 📞 Support
 
-- **Enterprise Support**: [enterprise@bitcoin-enterprise-suite.org](mailto:enterprise@bitcoin-enterprise-suite.org)
-- **General Questions**: [support@bitcoin-enterprise-suite.org](mailto:support@bitcoin-enterprise-suite.org)
+- **Enterprise Support**: [Enterprise@fusionpact.com](mailto:Enterprise@fusionpact.com)
+- **General Questions**: [Hello@fusionpact.com](mailto:Hello@fusionpact.com)
 - **Security Issues**: [Security@fusionpact.com](mailto:Security@fusionpact.com)
 
 ---
