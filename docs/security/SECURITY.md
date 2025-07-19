@@ -34,7 +34,7 @@ Security is our highest priority in the Bitcoin Enterprise Suite. This document 
 
 If you discover a security vulnerability, please follow these steps:
 
-1. **Email**: Send details to [security@bitcoin-enterprise-suite.org](mailto:security@bitcoin-enterprise-suite.org)
+1. **Email**: Send details to [Security@fusionpact.com](mailto:Security@fusionpact.com)
 2. **Encryption**: Use our PGP key for sensitive communications (Key ID: XXXXX)
 3. **Include**: 
    - Description of the vulnerability
@@ -225,7 +225,7 @@ encrypted_storage = true
 - [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/)
 
 ### Contact Information
-- **Security Team**: [security@bitcoin-enterprise-suite.org](mailto:security@bitcoin-enterprise-suite.org)
+- **Security Team**: [Security@fusionpact.com](mailto:Security@fusionpact.com)
 - **PGP Key**: [Download Public Key](https://bitcoin-enterprise-suite.org/security.asc)
 - **Security Updates**: [Subscribe to Security Announcements](https://bitcoin-enterprise-suite.org/security-updates)
 

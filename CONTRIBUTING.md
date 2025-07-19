@@ -256,7 +256,7 @@ pub fn execute_script(script: &Script, context: &ExecutionContext) -> Result<Exe
 
 **DO NOT** open public issues for security vulnerabilities. Instead:
 
-1. Email: [security@bitcoin-enterprise-suite.org](mailto:security@bitcoin-enterprise-suite.org)
+1. Email: [Security@fusionpact.com](mailto:Security@fusionpact.com)
 2. Include detailed description and reproduction steps
 3. Allow reasonable time for response before public disclosure
 
@@ -311,7 +311,7 @@ Use our [PR template](./.github/PULL_REQUEST_TEMPLATE/pull_request_template.md) 
 - **GitHub Discussions**: General questions and feature discussions
 - **Discord**: Real-time developer chat and support
 - **Twitter**: Announcements and updates
-- **Email**: security@bitcoin-enterprise-suite.org for security issues
+- **Email**: Security@fusionpact.com for security issues
 
 ### Recognition
 
