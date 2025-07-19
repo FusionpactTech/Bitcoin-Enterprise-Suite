@@ -137,6 +137,34 @@ cargo tarpaulin --workspace --out Html
 - **Q3 2024**: AICRM-SDK General Availability with real-time monitoring
 - **Q4 2024**: IMO-EO Release with energy optimization algorithms
 
+## 💝 Support Our Mission: Empowering Bitcoin's Future
+
+The `bitcoin-enterprise-suite` is a testament to the power of open-source collaboration, driven by a shared vision for a more secure, scalable, and innovative Bitcoin ecosystem. Your contributions, whether through code, documentation, or financial support, directly fuel our ability to deliver cutting-edge, enterprise-grade solutions that benefit the entire industry.
+
+To help us accelerate development, maintain the highest standards of security and quality, and continue pushing the boundaries of what's possible with Bitcoin, we welcome your generous support.
+
+**Every contribution, no matter the size, makes a tangible difference.**
+
+### 🪙 Contribute Bitcoin (BTC) to our Development Fund
+
+**Bitcoin Address:** `bc1q765njarr3lqlck83fya5t4r7uldzm37plq05dq`
+
+<div align="center">
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=bc1q765njarr3lqlck83fya5t4r7uldzm37plq05dq" alt="Bitcoin Donation QR Code" width="200" height="200">
+  <br>
+  <em>QR Code for easy scanning</em>
+</div>
+
+### Other Ways to Support
+
+- ⭐ **Star this repository** to increase visibility
+- 🐛 **Report bugs** and suggest improvements
+- 📝 **Contribute code** and documentation
+- 🗣️ **Spread the word** in the Bitcoin community
+- 🤝 **Partner with us** for enterprise solutions
+
+---
+
 ## 📄 License
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
