@@ -2,6 +2,8 @@
 
 Welcome to the comprehensive documentation for the Bitcoin Enterprise Suite! This documentation provides everything you need to understand, integrate, and contribute to our enterprise-grade Bitcoin infrastructure libraries.
 
+*Powered by [Fusionpact Technologies Inc.](https://fusionpact.com) - Leading innovation in Bitcoin enterprise solutions.*
+
 ## 🎯 Quick Navigation
 
 ### 🚀 Getting Started

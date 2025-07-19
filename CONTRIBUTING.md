@@ -2,6 +2,8 @@
 
 Thank you for your interest in contributing to the Bitcoin Enterprise Suite! This guide will help you get started with contributing to our open-source Bitcoin infrastructure libraries.
 
+*The Bitcoin Enterprise Suite is powered by [Fusionpact Technologies Inc.](https://fusionpact.com), dedicated to advancing Bitcoin enterprise adoption through innovative, secure, and scalable solutions.*
+
 ## 📋 Table of Contents
 
 - [Code of Conduct](#code-of-conduct)

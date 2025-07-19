@@ -13,7 +13,7 @@ edition = "2021"
 license = "Apache-2.0"
 repository = "https://github.com/bitcoin-enterprise-suite/bitcoin-enterprise-suite"
 homepage = "https://bitcoin-enterprise-suite.org"
-authors = ["Bitcoin Enterprise Suite Contributors"]
+authors = ["Fusionpact Technologies Inc.", "Bitcoin Enterprise Suite Contributors"]
 keywords = ["bitcoin", "enterprise", "blockchain", "cryptocurrency", "rust"]
 categories = ["cryptography", "finance", "api-bindings"]
 

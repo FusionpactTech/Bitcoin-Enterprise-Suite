@@ -7,6 +7,8 @@
 
 **Open-source, enterprise-grade Bitcoin infrastructure libraries for the next generation of financial technology.**
 
+*Powered by [Fusionpact Technologies Inc.](https://fusionpact.com) - Leading the future of Bitcoin enterprise solutions.*
+
 ---
 
 ## 🚀 Vision
@@ -182,7 +184,11 @@ Security is our top priority. Please review our [Security Policy](./docs/securit
 ---
 
 <div align="center">
-  <strong>Built with ❤️ for the Bitcoin ecosystem</strong>
+  <strong>Built with ❤️ for the Bitcoin ecosystem by Fusionpact Technologies Inc.</strong>
   <br>
   <sub>Empowering enterprise Bitcoin adoption through secure, scalable infrastructure</sub>
+  <br><br>
+  <a href="https://fusionpact.com">
+    <img src="https://img.shields.io/badge/Powered%20by-Fusionpact%20Technologies%20Inc.-blue?style=for-the-badge" alt="Powered by Fusionpact Technologies Inc.">
+  </a>
 </div>
