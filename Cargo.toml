@@ -1,0 +1,151 @@
+[workspace]
+resolver = "2"
+members = [
+    "libs/biscol",
+    "libs/cci-sat", 
+    "libs/aicrm-sdk",
+    "libs/imo-eo",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+repository = "https://github.com/bitcoin-enterprise-suite/bitcoin-enterprise-suite"
+homepage = "https://bitcoin-enterprise-suite.org"
+authors = ["Bitcoin Enterprise Suite Contributors"]
+keywords = ["bitcoin", "enterprise", "blockchain", "cryptocurrency", "rust"]
+categories = ["cryptography", "finance", "api-bindings"]
+
+[workspace.dependencies]
+# Core Bitcoin libraries
+bitcoin = "0.31"
+secp256k1 = { version = "0.28", features = ["global-context", "recovery"] }
+bitcoin_hashes = "0.13"
+bitcoinconsensus = "0.106"
+
+# Cryptography - simplified to avoid edition2024 conflicts
+# ring = "0.17"
+# aes-gcm = "0.10"
+# chacha20poly1305 = "0.10"
+# hkdf = "0.12"
+sha2 = "0.10"
+# blake3 = "1.5"
+# base64ct = "1.6"  # Pin to older version to avoid edition2024 requirement
+
+# Zero-knowledge proofs - temporarily disabled due to edition2024 conflict
+# ark-std = "0.4"
+# ark-crypto-primitives = "0.4" 
+# ark-relations = "0.4"
+bulletproofs = "4.0"
+
+# Networking and protocols
+tokio = { version = "1.0", features = ["full"] }
+hyper = { version = "1.0", features = ["full"] }
+tonic = "0.10"
+prost = "0.12"
+lightning = "0.0.118"
+lightning-net-tokio = "0.0.118"
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+bincode = "1.3"
+toml = "0.8"
+cbor4ii = "0.3"
+
+# Async and concurrency
+futures = "0.3"
+tokio-stream = "0.1"
+async-trait = "0.1"
+rayon = "1.8"
+crossbeam = "0.8"
+
+# Database and storage
+rocksdb = "0.21"
+sqlx = { version = "0.7", features = ["postgres", "mysql", "sqlite", "runtime-tokio-rustls"] }
+redis = { version = "0.24", features = ["tokio-comp"] }
+
+# HTTP and web
+reqwest = { version = "0.11", features = ["json", "rustls-tls"] }
+axum = "0.7"
+tower = "0.4"
+tower-http = { version = "0.5", features = ["full"] }
+
+# Machine Learning (for AICRM)
+candle-core = "0.3"
+candle-nn = "0.3"
+candle-transformers = "0.3"
+smartcore = "0.3"
+
+# Monitoring and observability
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+metrics = "0.21"
+prometheus = "0.13"
+opentelemetry = "0.21"
+
+# Error handling
+thiserror = "1.0"
+anyhow = "1.0"
+color-eyre = "0.6"
+
+# Testing
+proptest = "1.4"
+quickcheck = "1.0"
+mockall = "0.12"
+wiremock = "0.5"
+
+# Utilities
+uuid = { version = "1.6", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+url = { version = "2.4", features = ["serde"] }
+hex = "0.4"
+base64 = "0.21"
+itertools = "0.12"
+once_cell = "1.19"
+lazy_static = "1.4"
+
+# Configuration
+config = "0.13"
+clap = { version = "4.4", features = ["derive", "env"] }
+dotenvy = "0.15"
+
+# Development tools
+cargo-audit = "0.18"
+cargo-tarpaulin = "0.27"
+
+[profile.dev]
+opt-level = 0
+debug = true
+split-debuginfo = "unpacked"
+debug-assertions = true
+overflow-checks = true
+lto = false
+panic = "unwind"
+incremental = true
+codegen-units = 256
+
+[profile.release]
+opt-level = 3
+debug = false
+strip = "symbols"
+debug-assertions = false
+overflow-checks = false
+lto = "fat"
+panic = "abort"
+incremental = false
+codegen-units = 1
+
+[profile.bench]
+inherits = "release"
+debug = true
+lto = "thin"
+
+[profile.test]
+opt-level = 1
+debug = true
+debug-assertions = true
+overflow-checks = true
+lto = false
+incremental = true

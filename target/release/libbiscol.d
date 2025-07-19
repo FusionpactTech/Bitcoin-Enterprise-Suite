@@ -1,0 +1,1 @@
+/workspace/target/release/libbiscol.rlib: /workspace/libs/biscol/src/compliance.rs /workspace/libs/biscol/src/contract.rs /workspace/libs/biscol/src/error.rs /workspace/libs/biscol/src/lib.rs /workspace/libs/biscol/src/multisig.rs /workspace/libs/biscol/src/script.rs /workspace/libs/biscol/src/taproot.rs /workspace/libs/biscol/src/zk.rs

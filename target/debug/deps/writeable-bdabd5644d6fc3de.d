@@ -1,0 +1,12 @@
+/workspace/target/debug/deps/libwriteable-bdabd5644d6fc3de.rmeta: /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/lib.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/cmp.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/impls.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/ops.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/parts_write_adapter.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/testing.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/to_string_or_borrow.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/try_writeable.rs
+
+/workspace/target/debug/deps/writeable-bdabd5644d6fc3de.d: /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/lib.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/cmp.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/impls.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/ops.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/parts_write_adapter.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/testing.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/to_string_or_borrow.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/try_writeable.rs
+
+/usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/lib.rs:
+/usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/cmp.rs:
+/usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/impls.rs:
+/usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/ops.rs:
+/usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/parts_write_adapter.rs:
+/usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/testing.rs:
+/usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/to_string_or_borrow.rs:
+/usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/writeable-0.6.1/src/try_writeable.rs:

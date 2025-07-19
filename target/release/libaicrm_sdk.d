@@ -1,0 +1,1 @@
+/workspace/target/release/libaicrm_sdk.rlib: /workspace/libs/aicrm-sdk/src/analytics.rs /workspace/libs/aicrm-sdk/src/compliance.rs /workspace/libs/aicrm-sdk/src/error.rs /workspace/libs/aicrm-sdk/src/lib.rs /workspace/libs/aicrm-sdk/src/ml.rs /workspace/libs/aicrm-sdk/src/monitoring.rs /workspace/libs/aicrm-sdk/src/reporting.rs /workspace/libs/aicrm-sdk/src/risk.rs

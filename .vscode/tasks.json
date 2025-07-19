@@ -1,0 +1,295 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "cargo build workspace",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["build", "--workspace"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": "$rustc"
+    },
+    {
+      "label": "cargo build workspace release",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["build", "--workspace", "--release"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": "$rustc"
+    },
+    {
+      "label": "cargo test workspace",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["test", "--workspace"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": "$rustc"
+    },
+    {
+      "label": "cargo test biscol",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["test", "-p", "biscol"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": "$rustc"
+    },
+    {
+      "label": "cargo test cci-sat",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["test", "-p", "cci-sat"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": "$rustc"
+    },
+    {
+      "label": "cargo test aicrm-sdk",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["test", "-p", "aicrm-sdk"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": "$rustc"
+    },
+    {
+      "label": "cargo test imo-eo",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["test", "-p", "imo-eo"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": "$rustc"
+    },
+    {
+      "label": "cargo clippy",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["clippy", "--workspace", "--all-targets", "--all-features", "--", "-D", "warnings"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": "$rustc"
+    },
+    {
+      "label": "cargo fmt",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["fmt", "--all"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "cargo doc",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["doc", "--workspace", "--no-deps", "--open"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": "$rustc"
+    },
+    {
+      "label": "cargo audit",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["audit"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "cargo bench",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["bench", "--workspace"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "cargo tarpaulin",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["tarpaulin", "--workspace", "--out", "Html"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "full ci check",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "cargo fmt --all -- --check && cargo clippy --workspace --all-targets --all-features -- -D warnings && cargo test --workspace && cargo audit"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "dependsOrder": "sequence"
+    },
+    {
+      "label": "cargo build biscol tests",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["build", "--tests", "-p", "biscol"],
+      "group": "build",
+      "presentation": {
+        "echo": false,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": "$rustc"
+    },
+    {
+      "label": "cargo build cci-sat tests",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["build", "--tests", "-p", "cci-sat"],
+      "group": "build",
+      "presentation": {
+        "echo": false,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": "$rustc"
+    },
+    {
+      "label": "cargo build aicrm-sdk tests",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["build", "--tests", "-p", "aicrm-sdk"],
+      "group": "build",
+      "presentation": {
+        "echo": false,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": "$rustc"
+    },
+    {
+      "label": "cargo build imo-eo tests",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["build", "--tests", "-p", "imo-eo"],
+      "group": "build",
+      "presentation": {
+        "echo": false,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": "$rustc"
+    },
+    {
+      "label": "cargo build workspace tests",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["build", "--tests", "--workspace"],
+      "group": "build",
+      "presentation": {
+        "echo": false,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": "$rustc"
+    },
+    {
+      "label": "cargo build examples",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["build", "--examples"],
+      "group": "build",
+      "presentation": {
+        "echo": false,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": "$rustc"
+    },
+    {
+      "label": "cargo build benchmarks",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["build", "--benches", "--release"],
+      "group": "build",
+      "presentation": {
+        "echo": false,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": "$rustc"
+    }
+  ]
+}

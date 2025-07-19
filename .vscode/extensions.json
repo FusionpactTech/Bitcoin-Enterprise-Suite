@@ -1,0 +1,63 @@
+{
+  "recommendations": [
+    // Essential Rust development
+    "rust-lang.rust-analyzer",
+    "vadimcn.vscode-lldb",
+    "serayuzgur.crates",
+    
+    // TOML support
+    "be5invis.toml",
+    "tamasfe.even-better-toml",
+    
+    // Git and version control
+    "eamodio.gitlens",
+    "github.vscode-pull-request-github",
+    "github.copilot",
+    
+    // Markdown and documentation
+    "yzhang.markdown-all-in-one",
+    "davidanson.vscode-markdownlint",
+    "bierner.markdown-mermaid",
+    
+    // Code quality and formatting
+    "esbenp.prettier-vscode",
+    "editorconfig.editorconfig",
+    "streetsidesoftware.code-spell-checker",
+    
+    // Testing and debugging
+    "hbenl.vscode-test-explorer",
+    "swellaby.vscode-rust-test-adapter",
+    
+    // Security and best practices
+    "ms-vscode.vscode-security",
+    "redhat.vscode-yaml",
+    
+    // Productivity
+    "ms-vscode.vscode-todo-highlight",
+    "gruntfuggly.todo-tree",
+    "alefragnani.bookmarks",
+    "ms-vscode.vscode-json",
+    
+    // Bitcoin and blockchain development
+    "ms-python.python",
+    "ms-toolsai.jupyter",
+    
+    // Docker and containers (for development environments)
+    "ms-vscode-remote.remote-containers",
+    "ms-azuretools.vscode-docker",
+    
+    // API development and testing
+    "humao.rest-client",
+    "42crunch.vscode-openapi",
+    
+    // Database support
+    "mtxr.sqltools",
+    "mtxr.sqltools-driver-pg",
+    "mtxr.sqltools-driver-sqlite"
+  ],
+  "unwantedRecommendations": [
+    // Extensions that might conflict or are not needed
+    "ms-vscode.cpptools",
+    "ms-dotnettools.csharp"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug BiSCOL Tests",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/target/debug/deps/biscol-${command:rust-analyzer.getPackageTarget}",
+      "args": [],
+      "cwd": "${workspaceFolder}/libs/biscol",
+      "sourceLanguages": ["rust"],
+      "preLaunchTask": "cargo build biscol tests",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug CCI-SAT Tests",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/target/debug/deps/cci_sat-${command:rust-analyzer.getPackageTarget}",
+      "args": [],
+      "cwd": "${workspaceFolder}/libs/cci-sat",
+      "sourceLanguages": ["rust"],
+      "preLaunchTask": "cargo build cci-sat tests",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug AICRM-SDK Tests",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/target/debug/deps/aicrm_sdk-${command:rust-analyzer.getPackageTarget}",
+      "args": [],
+      "cwd": "${workspaceFolder}/libs/aicrm-sdk",
+      "sourceLanguages": ["rust"],
+      "preLaunchTask": "cargo build aicrm-sdk tests",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug IMO-EO Tests",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/target/debug/deps/imo_eo-${command:rust-analyzer.getPackageTarget}",
+      "args": [],
+      "cwd": "${workspaceFolder}/libs/imo-eo",
+      "sourceLanguages": ["rust"],
+      "preLaunchTask": "cargo build imo-eo tests",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug All Tests",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/target/debug/deps/${command:rust-analyzer.getPackageTarget}",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "sourceLanguages": ["rust"],
+      "preLaunchTask": "cargo build workspace tests",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Run BiSCOL Example",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/target/debug/examples/biscol_example",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "sourceLanguages": ["rust"],
+      "preLaunchTask": "cargo build examples",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Benchmark Performance",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/target/release/deps/bench-${command:rust-analyzer.getPackageTarget}",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "sourceLanguages": ["rust"],
+      "preLaunchTask": "cargo build benchmarks",
+      "console": "integratedTerminal"
+    }
+  ]
+}

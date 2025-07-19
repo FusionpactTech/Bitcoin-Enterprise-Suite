@@ -1,0 +1,196 @@
+name: ✨ Feature Request
+description: Suggest a new feature or enhancement
+title: "[Feature]: "
+labels: ["enhancement", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a new feature! Please describe your idea in detail to help us understand and evaluate the request.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checklist
+      description: Please verify the following before submitting
+      options:
+        - label: I have searched existing issues and discussions for similar feature requests
+          required: true
+        - label: I have read the project roadmap and documentation
+          required: true
+        - label: This feature aligns with the project's goals and scope
+          required: true
+
+  - type: dropdown
+    id: library
+    attributes:
+      label: Target Library
+      description: Which library should this feature be added to?
+      options:
+        - BiSCOL (Smart Contract Orchestration)
+        - CCI-SAT (Cross-Chain Interoperability)
+        - AICRM-SDK (AI Compliance & Risk Management)
+        - IMO-EO (Mining Operations & Energy Optimization)
+        - Multiple Libraries
+        - New Library
+        - Documentation
+        - Development Tools
+      default: 0
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Feature Summary
+      description: A brief, clear summary of the feature you'd like to see
+      placeholder: Summarize the feature in 1-2 sentences
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: What problem does this feature solve? What use case does it address?
+      placeholder: |
+        Describe the problem or limitation you're experiencing...
+        - What current functionality is missing or inadequate?
+        - What workflow would this improve?
+        - What pain points would this address?
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe your proposed solution in detail
+      placeholder: |
+        How would you like this feature to work?
+        - What should the API look like?
+        - How should users interact with it?
+        - What configuration options should be available?
+    validations:
+      required: true
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Usage Examples
+      description: Provide code examples showing how this feature would be used
+      render: rust
+      placeholder: |
+        // Example of how the feature would be used
+        use bitcoin_enterprise_suite::prelude::*;
+
+        fn example_usage() {
+            // Your proposed API usage here
+        }
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: What alternative solutions or workarounds have you considered?
+      placeholder: |
+        - Alternative approach 1: ...
+        - Alternative approach 2: ...
+        - Current workaround: ...
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this feature to you and your use case?
+      options:
+        - Critical (Blocking major functionality)
+        - High (Significantly improves workflow)
+        - Medium (Nice to have improvement)
+        - Low (Minor convenience)
+      default: 2
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: Estimated Complexity
+      description: How complex do you think this feature would be to implement?
+      options:
+        - Low (Simple addition or modification)
+        - Medium (Moderate changes required)
+        - High (Significant architectural changes)
+        - Unknown (Not sure)
+      default: 3
+
+  - type: checkboxes
+    id: categories
+    attributes:
+      label: Feature Categories
+      description: What categories does this feature fall into? (Select all that apply)
+      options:
+        - label: Security Enhancement
+        - label: Performance Improvement
+        - label: Developer Experience
+        - label: New Functionality
+        - label: API Enhancement
+        - label: Documentation
+        - label: Testing/Quality Assurance
+        - label: Cross-chain Compatibility
+        - label: Compliance/Regulatory
+        - label: Energy Efficiency
+
+  - type: textarea
+    id: benefits
+    attributes:
+      label: Benefits
+      description: What are the key benefits of implementing this feature?
+      placeholder: |
+        - Benefit 1: ...
+        - Benefit 2: ...
+        - Impact on users: ...
+        - Impact on ecosystem: ...
+
+  - type: textarea
+    id: considerations
+    attributes:
+      label: Implementation Considerations
+      description: Are there any technical considerations, constraints, or requirements?
+      placeholder: |
+        - Performance requirements: ...
+        - Security considerations: ...
+        - Backward compatibility: ...
+        - Dependencies: ...
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution Interest
+      description: Would you be interested in contributing to this feature?
+      options:
+        - label: I would like to implement this feature myself
+        - label: I would like to help design the API
+        - label: I would like to help with testing
+        - label: I would like to help with documentation
+        - label: I'm available for consultation during implementation
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any additional information, links, or references that might be helpful
+      placeholder: |
+        - Related issues: ...
+        - External references: ...
+        - Industry standards: ...
+        - Similar implementations: ...
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Thank You!
+        
+        Thank you for taking the time to suggest this feature. Feature requests help drive the evolution of the Bitcoin Enterprise Suite.
+        
+        The maintainers will review this request and provide feedback. Community input and discussion are always welcome!

@@ -1,0 +1,1 @@
+/workspace/target/release/libcci_sat.rlib: /workspace/libs/cci-sat/src/atomic_swap.rs /workspace/libs/cci-sat/src/bridge.rs /workspace/libs/cci-sat/src/error.rs /workspace/libs/cci-sat/src/lib.rs /workspace/libs/cci-sat/src/lightning.rs /workspace/libs/cci-sat/src/monitoring.rs /workspace/libs/cci-sat/src/protocols.rs /workspace/libs/cci-sat/src/wallet.rs

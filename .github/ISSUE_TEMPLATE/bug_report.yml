@@ -1,0 +1,162 @@
+name: 🐛 Bug Report
+description: Report a bug or unexpected behavior
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to report a bug! Please fill out this form as completely as possible to help us understand and reproduce the issue.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checklist
+      description: Please verify the following before submitting
+      options:
+        - label: I have searched existing issues to ensure this bug hasn't been reported
+          required: true
+        - label: I have read the documentation and troubleshooting guides
+          required: true
+        - label: I am using a supported version of the Bitcoin Enterprise Suite
+          required: true
+
+  - type: dropdown
+    id: library
+    attributes:
+      label: Affected Library
+      description: Which library is experiencing the issue?
+      options:
+        - BiSCOL (Smart Contract Orchestration)
+        - CCI-SAT (Cross-Chain Interoperability)
+        - AICRM-SDK (AI Compliance & Risk Management)
+        - IMO-EO (Mining Operations & Energy Optimization)
+        - Multiple Libraries
+        - Documentation
+        - Build System/CI
+      default: 0
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: What version of the Bitcoin Enterprise Suite are you using?
+      placeholder: "0.1.0"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is
+      placeholder: Describe what happened and what you expected to happen
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Detailed steps to reproduce the behavior
+      placeholder: |
+        1. Initialize the library with...
+        2. Call function...
+        3. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+      placeholder: Describe the expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What actually happened instead?
+      placeholder: Describe what actually happened
+    validations:
+      required: true
+
+  - type: textarea
+    id: code
+    attributes:
+      label: Code Sample
+      description: Minimal code sample that reproduces the issue
+      render: rust
+      placeholder: |
+        use bitcoin_enterprise_suite::prelude::*;
+
+        fn main() {
+            // Your code here that demonstrates the issue
+        }
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error Messages/Logs
+      description: Any error messages, stack traces, or relevant log output
+      render: shell
+      placeholder: Paste error messages or logs here
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment Information
+      description: |
+        Provide details about your environment
+      render: markdown
+      placeholder: |
+        - **OS**: Ubuntu 22.04
+        - **Rust Version**: 1.70.0
+        - **Cargo Version**: 1.70.0
+        - **Bitcoin Core Version**: 24.0.1
+        - **Additional Dependencies**: 
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How severe is this issue?
+      options:
+        - Critical (Security vulnerability or data loss)
+        - High (Major functionality broken)
+        - Medium (Feature partially broken)
+        - Low (Minor issue or inconvenience)
+      default: 2
+
+  - type: checkboxes
+    id: security
+    attributes:
+      label: Security Consideration
+      description: Please check if this could be a security issue
+      options:
+        - label: This bug might have security implications
+          required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any additional information that might be helpful
+      placeholder: Add any other context about the problem here
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Security Notice
+        
+        ⚠️ **If this issue involves a security vulnerability, please do not report it publicly.**
+        
+        Instead, please email security@bitcoin-enterprise-suite.org with details.
+        We take security seriously and will respond promptly to security reports.
