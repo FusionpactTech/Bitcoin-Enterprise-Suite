@@ -1,9 +1,18 @@
 # 🟠 Bitcoin Enterprise Suite
 
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Rust](https://img.shields.io/badge/Rust-1.70%2B-orange.svg)](https://www.rust-lang.org/)
-[![Security Audited](https://img.shields.io/badge/Security-Audited-green.svg)](./docs/security/audit-reports.md)
-[![CI/CD](https://github.com/bitcoin-enterprise-suite/bitcoin-enterprise-suite/workflows/CI/badge.svg)](https://github.com/bitcoin-enterprise-suite/bitcoin-enterprise-suite/actions)
+<div align="center">
+
+[![Stars](https://img.shields.io/github/stars/FusionpactTech/Bitcoin-Enterprise-Suite?style=for-the-badge&logo=github)](https://github.com/FusionpactTech/Bitcoin-Enterprise-Suite/stargazers)
+[![Forks](https://img.shields.io/github/forks/FusionpactTech/Bitcoin-Enterprise-Suite?style=for-the-badge&logo=github)](https://github.com/FusionpactTech/Bitcoin-Enterprise-Suite/network)
+[![License](https://img.shields.io/github/license/FusionpactTech/Bitcoin-Enterprise-Suite?style=for-the-badge)](LICENSE)
+[![CI/CD](https://img.shields.io/github/actions/workflow/status/FusionpactTech/Bitcoin-Enterprise-Suite/ci.yml?style=for-the-badge&logo=github-actions)](https://github.com/FusionpactTech/Bitcoin-Enterprise-Suite/actions)
+
+[![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?style=for-the-badge&logo=discord)](https://discord.gg/ZK5n8A8B)
+[![Twitter](https://img.shields.io/badge/Twitter-Follow%20Us-1DA1F2?style=for-the-badge&logo=twitter)](https://x.com/fusionpact)
+[![Rust](https://img.shields.io/badge/Rust-1.70%2B-000000?style=for-the-badge&logo=rust)](https://www.rust-lang.org/)
+[![Bitcoin](https://img.shields.io/badge/Bitcoin-Enterprise-F7931E?style=for-the-badge&logo=bitcoin)](https://bitcoin.org)
+
+</div>
 
 **Open-source, enterprise-grade Bitcoin infrastructure libraries for the next generation of financial technology.**
 
