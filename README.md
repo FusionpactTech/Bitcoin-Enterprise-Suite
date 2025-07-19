@@ -98,9 +98,9 @@ imo-eo = "0.1.0"
 ## 📚 Documentation
 
 - **[📖 Complete Documentation](./docs/README.md)** - Architecture, guides, and API references
-- **[🚀 Getting Started Guide](./docs/getting-started.md)** - Step-by-step setup and first integration
+- **[🚀 Getting Started Guide](./docs/getting-started/README.md)** - Step-by-step setup and first integration
 - **[🏗️ Architecture Overview](./docs/architecture/overview.md)** - High-level system design and component interaction
-- **[🔧 API References](./docs/api/)** - Detailed API documentation for each library
+- **[🔧 API References](./docs/api/README.md)** - Detailed API documentation for each library
 - **[💡 Examples](./examples/)** - Practical, runnable examples for common use cases
 - **[🛡️ Security](./docs/security/)** - Security practices, audit reports, and vulnerability disclosure
 
