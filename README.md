@@ -125,7 +125,7 @@ cargo tarpaulin --workspace --out Html
 
 ## 🌟 Community
 
-- **[Discord](https://discord.gg/bitcoin-enterprise-suite)** - Join our developer community
+- **[Discord](https://discord.gg/ZK5n8A8B)** - Join our developer community
 - **[GitHub Discussions](https://github.com/bitcoin-enterprise-suite/bitcoin-enterprise-suite/discussions)** - Ask questions and share ideas
 - **[Twitter](https://twitter.com/BitcoinEntSuite)** - Follow for updates and announcements
 - **[Blog](https://blog.bitcoin-enterprise-suite.org)** - Technical articles and tutorials
