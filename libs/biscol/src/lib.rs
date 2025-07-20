@@ -33,35 +33,35 @@
 
 // Re-export commonly used types from bitcoin crate
 pub use bitcoin::{Address, Network, Transaction, TxOut};
-pub use secp256k1::{PublicKey, SecretKey};
 pub use secp256k1::ecdsa::Signature;
+pub use secp256k1::{PublicKey, SecretKey};
 
 // Core modules
-pub mod error;
-pub mod script;
+pub mod compliance;
 pub mod contract;
+pub mod error;
+pub mod multisig;
+pub mod script;
 pub mod taproot;
 pub mod zk;
-pub mod multisig;
-pub mod compliance;
 
 // Prelude for convenience
 pub mod prelude {
     //! Common imports and types for BiSCOL users
-    
-    pub use crate::error::*;
-    pub use crate::script::*;
+
     pub use crate::contract::*;
-    pub use crate::taproot::*;
+    pub use crate::error::*;
     pub use crate::multisig::*;
+    pub use crate::script::*;
+    pub use crate::taproot::*;
 }
 
 // Main public API exports
+pub use contract::{ContractBuilder, ContractExecution, SmartContract};
 pub use error::{Error, Result};
-pub use script::{Script, ScriptBuilder, ExecutionContext, ExecutionResult};
-pub use contract::{SmartContract, ContractBuilder, ContractExecution};
-pub use taproot::{TaprootScript, TaprootBuilder};
 pub use multisig::{MultiSig, MultiSigBuilder, Threshold};
+pub use script::{ExecutionContext, ExecutionResult, Script, ScriptBuilder};
+pub use taproot::{TaprootBuilder, TaprootScript};
 
 /// Library version
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
@@ -77,8 +77,9 @@ mod tests {
     use super::*;
 
     #[test]
+    #[allow(clippy::len_zero)]
     fn test_library_version() {
-        assert!(!VERSION.is_empty());
+        assert!(VERSION.len() > 0);
     }
 
     #[test]

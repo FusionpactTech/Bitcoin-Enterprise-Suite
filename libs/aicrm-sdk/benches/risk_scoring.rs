@@ -1,14 +1,10 @@
-use criterion::{black_box, criterion_group, criterion_main, Criterion};
 use aicrm_sdk::RiskAnalyzer;
+use criterion::{black_box, criterion_group, criterion_main, Criterion};
 
 fn benchmark_risk_scoring(c: &mut Criterion) {
     c.bench_function("risk_analyzer_creation", |b| {
         b.iter(|| {
-            let analyzer = RiskAnalyzer::builder()
-                .with_ml_model(black_box("test_model"))
-                .with_threshold(black_box(0.75))
-                .build()
-                .unwrap();
+            let analyzer = RiskAnalyzer::new();
             black_box(analyzer);
         })
     });

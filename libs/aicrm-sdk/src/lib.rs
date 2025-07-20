@@ -35,31 +35,31 @@
 pub use bitcoin::{Address, Network, Transaction, TxOut};
 
 // Core modules
-pub mod error;
-pub mod risk;
-pub mod compliance;
-pub mod monitoring;
-pub mod ml;
-pub mod reporting;
 pub mod analytics;
+pub mod compliance;
+pub mod error;
+pub mod ml;
+pub mod monitoring;
+pub mod reporting;
+pub mod risk;
 
 // Prelude for convenience
 pub mod prelude {
     //! Common imports and types for AICRM-SDK users
-    
-    pub use crate::error::*;
-    pub use crate::risk::*;
-    pub use crate::compliance::*;
-    pub use crate::monitoring::*;
+
     pub use crate::analytics::*;
+    pub use crate::compliance::*;
+    pub use crate::error::*;
+    pub use crate::monitoring::*;
+    pub use crate::risk::*;
 }
 
 // Main public API exports
+pub use analytics::{Analytics, Dashboard, Report};
+pub use compliance::{AmlCheck, ComplianceEngine, KycVerification};
 pub use error::{Error, Result};
-pub use risk::{RiskAnalyzer, RiskScore, RiskModel};
-pub use compliance::{ComplianceEngine, AmlCheck, KycVerification};
-pub use monitoring::{TransactionMonitor, AlertManager};
-pub use analytics::{Analytics, Report, Dashboard};
+pub use monitoring::{AlertManager, TransactionMonitor};
+pub use risk::{RiskAnalyzer, RiskModel, RiskScore};
 
 /// Library version
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
@@ -75,8 +75,9 @@ mod tests {
     use super::*;
 
     #[test]
+    #[allow(clippy::len_zero)]
     fn test_library_version() {
-        assert!(!VERSION.is_empty());
+        assert!(VERSION.len() > 0);
     }
 
     #[tokio::test]

@@ -32,36 +32,36 @@
 #![warn(rust_2018_idioms)]
 
 // Re-export commonly used types
-pub use bitcoin::{Address, Network, Transaction, BlockHash};
+pub use bitcoin::{Address, BlockHash, Network, Transaction};
 
 // Core modules
-pub mod error;
-pub mod mining;
-pub mod energy;
-pub mod hardware;
-pub mod optimization;
 pub mod analytics;
 pub mod carbon;
+pub mod energy;
+pub mod error;
+pub mod hardware;
+pub mod mining;
+pub mod optimization;
 
 // Prelude for convenience
 pub mod prelude {
     //! Common imports and types for IMO-EO users
-    
-    pub use crate::error::*;
-    pub use crate::mining::*;
-    pub use crate::energy::*;
-    pub use crate::hardware::*;
-    pub use crate::optimization::*;
+
     pub use crate::analytics::*;
+    pub use crate::energy::*;
+    pub use crate::error::*;
+    pub use crate::hardware::*;
+    pub use crate::mining::*;
+    pub use crate::optimization::*;
 }
 
 // Main public API exports
-pub use error::{Error, Result};
-pub use mining::{MiningOptimizer, PoolManager, MiningStrategy};
-pub use energy::{EnergyMonitor, PowerManager, EfficiencyTracker};
-pub use hardware::{HardwareManager, MaintenanceScheduler, HealthMonitor};
-pub use optimization::{Optimizer, OptimizationStrategy, Recommendations};
 pub use carbon::{CarbonTracker, EmissionsCalculator, OffsetManager};
+pub use energy::{EfficiencyTracker, EnergyMonitor, PowerManager};
+pub use error::{Error, Result};
+pub use hardware::{HardwareManager, HealthMonitor, MaintenanceScheduler};
+pub use mining::{MiningOptimizer, MiningStrategy, PoolManager};
+pub use optimization::{OptimizationStrategy, Optimizer, Recommendations};
 
 /// Library version
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
@@ -77,8 +77,9 @@ mod tests {
     use super::*;
 
     #[test]
+    #[allow(clippy::len_zero)]
     fn test_library_version() {
-        assert!(!VERSION.is_empty());
+        assert!(VERSION.len() > 0);
     }
 
     #[tokio::test]
