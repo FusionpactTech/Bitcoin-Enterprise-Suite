@@ -1,5 +1,5 @@
-use criterion::{black_box, criterion_group, criterion_main, Criterion};
 use cci_sat::AtomicSwap;
+use criterion::{black_box, criterion_group, criterion_main, Criterion};
 
 fn benchmark_atomic_swaps(c: &mut Criterion) {
     c.bench_function("atomic_swap_creation", |b| {

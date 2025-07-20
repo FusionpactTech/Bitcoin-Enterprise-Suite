@@ -36,30 +36,30 @@ pub use bitcoin::{Address, Network, Transaction, TxOut};
 // pub use lightning::ln::channelmanager::ChannelManager;  // Temporarily disabled
 
 // Core modules
-pub mod error;
 pub mod atomic_swap;
-pub mod lightning;
 pub mod bridge;
-pub mod wallet;
-pub mod protocols;
+pub mod error;
+pub mod lightning;
 pub mod monitoring;
+pub mod protocols;
+pub mod wallet;
 
 // Prelude for convenience
 pub mod prelude {
     //! Common imports and types for CCI-SAT users
-    
-    pub use crate::error::*;
+
     pub use crate::atomic_swap::*;
-    pub use crate::lightning::*;
     pub use crate::bridge::*;
+    pub use crate::error::*;
+    pub use crate::lightning::*;
     pub use crate::wallet::*;
 }
 
 // Main public API exports
-pub use error::{Error, Result};
 pub use atomic_swap::{AtomicSwap, SwapBuilder, SwapExecution};
-pub use lightning::{LightningChannel, ChannelBuilder};
 pub use bridge::{Bridge, BridgeProtocol, FraudProof};
+pub use error::{Error, Result};
+pub use lightning::{ChannelBuilder, LightningChannel};
 pub use wallet::{MultiChainWallet, WalletBuilder};
 
 /// Library version
@@ -76,8 +76,9 @@ mod tests {
     use super::*;
 
     #[test]
+    #[allow(clippy::len_zero)]
     fn test_library_version() {
-        assert!(!VERSION.is_empty());
+        assert!(VERSION.len() > 0);
     }
 
     #[tokio::test]
