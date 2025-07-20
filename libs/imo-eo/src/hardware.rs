@@ -1,6 +1,5 @@
 //! Hardware management for IMO-EO
 
-use crate::{Error, Result};
 
 /// Hardware manager
 pub struct HardwareManager;

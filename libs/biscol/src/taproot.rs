@@ -1,6 +1,6 @@
 //! Taproot implementation for BiSCOL
 
-use crate::{Error, Result};
+use crate::Result;
 
 /// Taproot script representation
 pub struct TaprootScript;

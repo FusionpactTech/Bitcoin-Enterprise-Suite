@@ -1,6 +1,6 @@
 //! Multi-signature support for BiSCOL
 
-use crate::{Error, Result};
+use crate::Result;
 
 /// Multi-signature configuration
 pub struct MultiSig;

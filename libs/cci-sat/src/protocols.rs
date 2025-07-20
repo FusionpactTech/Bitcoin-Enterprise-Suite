@@ -1,6 +1,5 @@
 //! Cross-chain protocols for CCI-SAT
 
-use crate::{Error, Result};
 
 /// Protocol implementation
 pub struct Protocol;

@@ -12,28 +12,27 @@
   "rust-analyzer.completion.autoimport.enable": true,
   "rust-analyzer.imports.granularity.group": "module",
   "rust-analyzer.imports.prefix": "self",
-  
   // General editor settings
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": true,
-    "source.organizeImports": true
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
   },
-  "editor.rulers": [100],
+  "editor.rulers": [
+    100
+  ],
   "editor.tabSize": 4,
   "editor.insertSpaces": true,
   "editor.trimAutoWhitespace": true,
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
-  
   // File associations
   "files.associations": {
     "*.toml": "toml",
     "Cargo.toml": "toml",
     "Cargo.lock": "toml"
   },
-  
   // Search and file explorer
   "search.exclude": {
     "**/target": true,
@@ -51,7 +50,6 @@
     "**/target/**": true,
     "**/.git/**": true
   },
-  
   // Bitcoin Enterprise Suite specific settings
   "rust-analyzer.linkedProjects": [
     "./Cargo.toml",
@@ -60,32 +58,26 @@
     "./libs/aicrm-sdk/Cargo.toml",
     "./libs/imo-eo/Cargo.toml"
   ],
-  
   // Testing
   "rust-analyzer.runnables.extraTestBinaryArgs": [
     "--nocapture"
   ],
-  
   // Documentation
   "rust-analyzer.hover.documentation": true,
   "rust-analyzer.hover.links.enable": true,
-  
   // Security and best practices
   "rust-analyzer.diagnostics.enable": true,
   "rust-analyzer.diagnostics.enableExperimental": true,
   "rust-analyzer.diagnostics.warningsAsHint": [],
   "rust-analyzer.diagnostics.warningsAsInfo": [],
-  
   // Git integration
   "git.ignoreLimitWarning": true,
   "git.autofetch": true,
   "git.confirmSync": false,
-  
   // Markdown settings for documentation
   "markdown.preview.fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
   "markdown.preview.fontSize": 14,
   "markdown.preview.lineHeight": 1.6,
-  
   // Extension settings
   "evenBetterToml.formatter.alignEntries": true,
   "evenBetterToml.formatter.allowedBlankLines": 1,
@@ -93,18 +85,15 @@
   "evenBetterToml.formatter.compactInlineTables": false,
   "evenBetterToml.formatter.indentTables": false,
   "evenBetterToml.formatter.indentString": "    ",
-  
   // Terminal settings
   "terminal.integrated.defaultProfile.linux": "bash",
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
   "terminal.integrated.fontSize": 14,
-  
   // Workbench
   "workbench.editor.enablePreview": false,
   "workbench.editor.restoreViewState": true,
   "workbench.startupEditor": "readme",
-  
   // Language-specific formatting
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
@@ -125,7 +114,6 @@
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  
   // Performance optimizations
   "rust-analyzer.cachePriming.enable": true,
   "rust-analyzer.cachePriming.numThreads": 0,

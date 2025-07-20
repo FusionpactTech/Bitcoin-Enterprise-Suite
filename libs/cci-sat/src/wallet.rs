@@ -1,6 +1,6 @@
 //! Multi-chain wallet for CCI-SAT
 
-use crate::{Error, Result};
+use crate::Result;
 
 /// Multi-chain wallet
 pub struct MultiChainWallet;

@@ -1,6 +1,5 @@
 //! Optimization algorithms for IMO-EO
 
-use crate::{Error, Result};
 
 /// Optimizer interface
 pub struct Optimizer;

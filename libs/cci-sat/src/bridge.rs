@@ -1,6 +1,5 @@
 //! Bridge protocols for CCI-SAT
 
-use crate::{Error, Result};
 
 /// Bridge implementation
 pub struct Bridge;

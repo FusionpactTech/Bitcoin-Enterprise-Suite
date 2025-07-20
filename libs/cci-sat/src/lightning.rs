@@ -1,6 +1,6 @@
 //! Lightning Network integration for CCI-SAT
 
-use crate::{Error, Result};
+use crate::Result;
 
 /// Lightning Network channel
 pub struct LightningChannel;

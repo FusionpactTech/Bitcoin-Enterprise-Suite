@@ -1,6 +1,5 @@
 //! Carbon tracking for IMO-EO
 
-use crate::{Error, Result};
 
 /// Carbon tracker
 pub struct CarbonTracker;

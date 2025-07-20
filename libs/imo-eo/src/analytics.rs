@@ -1,6 +1,5 @@
 //! Analytics for IMO-EO
 
-use crate::{Error, Result};
 
 /// Analytics engine
 pub struct Analytics;

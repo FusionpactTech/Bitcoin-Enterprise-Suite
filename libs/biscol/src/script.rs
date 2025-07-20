@@ -1,6 +1,6 @@
 //! Bitcoin script execution and management for BiSCOL
 
-use crate::{Error, Result};
+use crate::Result;
 
 /// Bitcoin script representation
 pub struct Script;

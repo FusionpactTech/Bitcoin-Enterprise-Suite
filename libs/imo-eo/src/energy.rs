@@ -1,6 +1,5 @@
 //! Energy management for IMO-EO
 
-use crate::{Error, Result};
 
 /// Energy monitor
 pub struct EnergyMonitor;

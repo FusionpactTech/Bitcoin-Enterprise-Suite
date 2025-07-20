@@ -1,6 +1,5 @@
 //! Transaction monitoring for AICRM-SDK
 
-use crate::{Error, Result};
 
 /// Transaction monitor
 pub struct TransactionMonitor;

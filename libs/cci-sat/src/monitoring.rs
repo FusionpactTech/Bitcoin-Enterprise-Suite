@@ -1,6 +1,5 @@
 //! Cross-chain monitoring for CCI-SAT
 
-use crate::{Error, Result};
 
 /// Monitoring system
 pub struct Monitor;

@@ -1,6 +1,5 @@
 //! Compliance features for BiSCOL
 
-use crate::{Error, Result};
 
 /// Compliance checker
 pub struct ComplianceChecker;

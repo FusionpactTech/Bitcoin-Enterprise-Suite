@@ -1,6 +1,5 @@
 //! Analytics for AICRM-SDK
 
-use crate::{Error, Result};
 
 /// Analytics engine
 pub struct Analytics;

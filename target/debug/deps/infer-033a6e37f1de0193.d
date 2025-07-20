@@ -1,0 +1,14 @@
+/workspace/target/debug/deps/libinfer-033a6e37f1de0193.rmeta: /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/lib.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/map.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/mod.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/app.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/archive.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/audio.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/doc.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/font.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/image.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/video.rs
+
+/workspace/target/debug/deps/infer-033a6e37f1de0193.d: /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/lib.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/map.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/mod.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/app.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/archive.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/audio.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/doc.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/font.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/image.rs /usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/video.rs
+
+/usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/lib.rs:
+/usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/map.rs:
+/usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/mod.rs:
+/usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/app.rs:
+/usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/archive.rs:
+/usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/audio.rs:
+/usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/doc.rs:
+/usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/font.rs:
+/usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/image.rs:
+/usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/infer-0.2.3/src/matchers/video.rs:
