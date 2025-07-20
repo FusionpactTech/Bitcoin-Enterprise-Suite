@@ -1,0 +1,93 @@
+[package]
+name = "imo-eo"
+description = "Intelligent Mining Operations & Energy Optimization Framework - AI-powered mining efficiency and sustainable energy management"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+keywords.workspace = true
+categories.workspace = true
+readme = "README.md"
+
+[lib]
+name = "imo_eo"
+path = "src/lib.rs"
+
+[dependencies]
+# Workspace dependencies
+bitcoin = { workspace = true }
+secp256k1 = { workspace = true }
+bitcoin_hashes = { workspace = true }
+
+# Machine Learning and analytics - temporarily disabled
+# smartcore = { workspace = true, optional = true }
+# candle-core = { workspace = true, optional = true }
+# candle-nn = { workspace = true, optional = true }
+
+# Async and concurrency - simplified
+tokio = { workspace = true }
+futures = { workspace = true }
+async-trait = { workspace = true }
+# rayon = { workspace = true }
+# crossbeam = { workspace = true }
+
+# HTTP and networking - temporarily disabled
+# reqwest = { workspace = true }
+# hyper = { workspace = true }
+
+# Database and storage - temporarily disabled
+# rocksdb = { workspace = true }
+# sqlx = { workspace = true }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+toml = { workspace = true }
+
+# Monitoring and metrics
+tracing = { workspace = true }
+metrics = { workspace = true }
+prometheus = { workspace = true }
+
+# Error handling
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+
+# Utilities
+uuid = { workspace = true }
+chrono = { workspace = true }
+hex = { workspace = true }
+itertools = { workspace = true }
+
+# Configuration
+config = { workspace = true }
+clap = { workspace = true }
+
+[dev-dependencies]
+tokio-test = "0.4"
+mockall = { workspace = true }
+proptest = { workspace = true }
+criterion = "0.5"
+
+[features]
+default = ["std"]
+std = []
+# analytics = ["smartcore", "candle-core"]  # Temporarily disabled
+optimization = []
+hardware-monitoring = []
+energy-tracking = []
+pool-management = []
+
+[[bench]]
+name = "mining_optimization"
+harness = false
+
+[[bench]]
+name = "energy_analytics"
+harness = false
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]

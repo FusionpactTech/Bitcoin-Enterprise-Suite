@@ -1,0 +1,86 @@
+[package]
+name = "cci-sat"
+description = "Cross-Chain Interoperability & Secure Asset Transfer Suite - Seamless, secure asset transfers across blockchain networks"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+keywords.workspace = true
+categories.workspace = true
+readme = "README.md"
+
+[lib]
+name = "cci_sat"
+path = "src/lib.rs"
+
+[dependencies]
+# Workspace dependencies
+bitcoin = { workspace = true }
+secp256k1 = { workspace = true }
+bitcoin_hashes = { workspace = true }
+lightning = { workspace = true }
+lightning-net-tokio = { workspace = true }
+
+# Networking and protocols - simplified to avoid OpenSSL dependencies
+tokio = { workspace = true }
+# hyper = { workspace = true }
+# tonic = { workspace = true }
+# prost = { workspace = true }
+# reqwest = { workspace = true }
+
+# Async and concurrency
+futures = { workspace = true }
+async-trait = { workspace = true }
+tokio-stream = { workspace = true }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+bincode = { workspace = true }
+
+# Database - temporarily disabled
+# rocksdb = { workspace = true }
+# sqlx = { workspace = true }
+
+# Error handling
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+
+# Utilities
+hex = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+url = { workspace = true }
+tracing = { workspace = true }
+
+# Cryptography - temporarily simplified
+# ring = { workspace = true }
+sha2 = { workspace = true }
+
+[dev-dependencies]
+tokio-test = "0.4"
+wiremock = { workspace = true }
+proptest = { workspace = true }
+criterion = "0.5"
+
+[features]
+default = ["std", "lightning"]
+std = []
+lightning = []
+ethereum = []
+atomic-swaps = []
+bridge-protocols = []
+
+[[bench]]
+name = "atomic_swaps"
+harness = false
+
+[[bench]]
+name = "lightning_channels"
+harness = false
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
