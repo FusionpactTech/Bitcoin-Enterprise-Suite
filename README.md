@@ -143,10 +143,10 @@ cargo tarpaulin --workspace --out Html
 
 ## 📈 Roadmap
 
-- **Q1 2024**: BiSCOL Alpha Release with Taproot integration
-- **Q2 2024**: CCI-SAT Beta with Lightning Network support
-- **Q3 2024**: AICRM-SDK General Availability with real-time monitoring
-- **Q4 2024**: IMO-EO Release with energy optimization algorithms
+- **Q3 2025**: BiSCOL v2.0 with advanced zero-knowledge proof optimizations and enhanced Taproot features
+- **Q4 2025**: CCI-SAT v2.0 with multi-chain bridge protocol expansion and enhanced Lightning Network scaling
+- **Q1 2026**: AICRM-SDK v2.0 with advanced AI-driven regulatory compliance automation and real-time global monitoring
+- **Q2 2026**: IMO-EO v2.0 with quantum-resistant mining algorithms and comprehensive carbon neutrality framework
 
 ## 💝 Support Our Mission: Empowering Bitcoin's Future
 
