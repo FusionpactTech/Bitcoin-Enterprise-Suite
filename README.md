@@ -11,6 +11,7 @@
 [![Twitter](https://img.shields.io/badge/Twitter-Follow%20Us-1DA1F2?style=for-the-badge&logo=twitter)](https://x.com/fusionpact)
 [![Rust](https://img.shields.io/badge/Rust-1.70%2B-000000?style=for-the-badge&logo=rust)](https://www.rust-lang.org/)
 [![Bitcoin](https://img.shields.io/badge/Bitcoin-Enterprise-F7931E?style=for-the-badge&logo=bitcoin)](https://bitcoin.org)
+[![Security](https://img.shields.io/badge/Security-Audited-green?style=for-the-badge&logo=shield)](./SECURITY.md)
 
 </div>
 
@@ -67,6 +68,15 @@ The Bitcoin Enterprise Suite is a comprehensive collection of production-ready, 
 - **📖 Well Documented**: Auto-generated API docs, architectural guides, and practical tutorials
 - **🧪 Thoroughly Tested**: Unit, integration, and end-to-end tests with >95% code coverage
 
+## 🛡️ Security & Automation
+
+- **🤖 Automated Security**: Dependabot enabled for dependency vulnerability alerts
+- **🔍 Continuous Monitoring**: Daily security scans and vulnerability assessments
+- **📋 Compliance Ready**: Built-in support for enterprise security and regulatory requirements
+- **🏗️ Secure Development**: Formal security practices with dedicated security workflows
+- **🔐 Supply Chain Security**: Signed releases, reproducible builds, and dependency validation
+- **📊 Transparent Roadmap**: Public feature tracking and community-driven development
+
 ## 🏃‍♂️ Quick Start
 
 ### Prerequisites
@@ -112,6 +122,16 @@ imo-eo = "0.1.0"
 - **[🔧 API References](./docs/api/README.md)** - Detailed API documentation for each library
 - **[💡 Examples](./examples/)** - Practical, runnable examples for common use cases
 - **[🛡️ Security](./docs/security/)** - Security practices, audit reports, and vulnerability disclosure
+- **[🗺️ Development Roadmap](./docs/guides/roadmap.md)** - Public roadmap and feature tracking
+
+### Per-Library Documentation
+
+Each library includes comprehensive documentation:
+
+- **[🔐 BiSCOL Documentation](./libs/biscol/README.md)** - Smart contract orchestration
+- **[🌉 CCI-SAT Documentation](./libs/cci-sat/README.md)** - Cross-chain interoperability  
+- **[🤖 AICRM-SDK Documentation](./libs/aicrm-sdk/README.md)** - AI-driven compliance
+- **[⚡ IMO-EO Documentation](./libs/imo-eo/README.md)** - Mining operations optimization
 
 ## 🤝 Contributing
 
