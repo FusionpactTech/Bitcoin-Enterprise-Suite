@@ -1,0 +1,294 @@
+name: Security Announcements
+
+on:
+  push:
+    paths:
+      - 'docs/security/**'
+      - 'SECURITY.md'
+      - 'libs/*/src/**'
+      - 'Cargo.toml'
+      - 'libs/*/Cargo.toml'
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      security_level:
+        description: 'Security Alert Level'
+        required: true
+        default: 'info'
+        type: choice
+        options:
+        - critical
+        - high
+        - medium
+        - low
+        - info
+      message:
+        description: 'Security Announcement Message'
+        required: true
+        type: string
+
+env:
+  SECURITY_EMAIL: security@fusionpact.com
+  
+jobs:
+  security-scan:
+    name: Security Vulnerability Scan
+    runs-on: ubuntu-latest
+    outputs:
+      vulnerabilities-found: ${{ steps.audit.outputs.vulnerabilities }}
+      security-report: ${{ steps.audit.outputs.report }}
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Install Rust
+      uses: dtolnay/rust-toolchain@stable
+      with:
+        components: clippy
+        
+    - name: Install cargo-audit
+      run: cargo install cargo-audit
+      
+    - name: Run security audit
+      id: audit
+      run: |
+        echo "Running security audit..."
+        if cargo audit --format json > audit-report.json; then
+          echo "vulnerabilities=false" >> $GITHUB_OUTPUT
+          echo "Security audit passed - no vulnerabilities found"
+        else
+          echo "vulnerabilities=true" >> $GITHUB_OUTPUT
+          echo "Security vulnerabilities detected!"
+          cat audit-report.json
+        fi
+        
+        # Generate human-readable report
+        cargo audit > security-report.txt || true
+        echo "report<<EOF" >> $GITHUB_OUTPUT
+        cat security-report.txt >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+        
+    - name: Upload security report
+      uses: actions/upload-artifact@v4
+      with:
+        name: security-report
+        path: |
+          audit-report.json
+          security-report.txt
+          
+  notify-subscribers:
+    name: Notify Security Subscribers
+    runs-on: ubuntu-latest
+    needs: security-scan
+    if: needs.security-scan.outputs.vulnerabilities-found == 'true' || github.event_name == 'workflow_dispatch'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Determine notification details
+      id: details
+      run: |
+        if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          echo "level=${{ github.event.inputs.security_level }}" >> $GITHUB_OUTPUT
+          echo "message=${{ github.event.inputs.message }}" >> $GITHUB_OUTPUT
+          echo "type=manual" >> $GITHUB_OUTPUT
+        elif [ "${{ needs.security-scan.outputs.vulnerabilities-found }}" = "true" ]; then
+          echo "level=high" >> $GITHUB_OUTPUT
+          echo "message=Security vulnerabilities detected in dependencies" >> $GITHUB_OUTPUT
+          echo "type=automated" >> $GITHUB_OUTPUT
+        else
+          echo "level=info" >> $GITHUB_OUTPUT
+          echo "message=Security update notification" >> $GITHUB_OUTPUT
+          echo "type=update" >> $GITHUB_OUTPUT
+        fi
+        
+        # Generate timestamp
+        echo "timestamp=$(date -u +"%Y-%m-%d %H:%M:%S UTC")" >> $GITHUB_OUTPUT
+        
+        # Generate issue number
+        echo "issue_number=SEC-$(date +%Y%m%d-%H%M%S)" >> $GITHUB_OUTPUT
+    
+    - name: Create GitHub Issue for Security Alert
+      id: create-issue
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const level = '${{ steps.details.outputs.level }}';
+          const message = '${{ steps.details.outputs.message }}';
+          const timestamp = '${{ steps.details.outputs.timestamp }}';
+          const issueNumber = '${{ steps.details.outputs.issue_number }}';
+          const vulnerabilityReport = `${{ needs.security-scan.outputs.security-report }}`;
+          
+          const levelEmoji = {
+            'critical': '🚨',
+            'high': '⚠️',
+            'medium': '🔶',
+            'low': '🔵',
+            'info': 'ℹ️'
+          };
+          
+          const title = `${levelEmoji[level]} Security Alert ${level.toUpperCase()}: ${issueNumber}`;
+          
+          let body = `# Security Announcement\n\n`;
+          body += `**Alert Level:** ${level.toUpperCase()}\n`;
+          body += `**Timestamp:** ${timestamp}\n`;
+          body += `**Issue ID:** ${issueNumber}\n\n`;
+          body += `## Summary\n\n${message}\n\n`;
+          
+          if (vulnerabilityReport && vulnerabilityReport.trim()) {
+            body += `## Vulnerability Report\n\n\`\`\`\n${vulnerabilityReport}\n\`\`\`\n\n`;
+          }
+          
+          body += `## Affected Components\n\n`;
+          body += `- aicrm-sdk: AI-Driven Compliance & Risk Management\n`;
+          body += `- biscol: Bitcoin Smart Contract Orchestration Layer\n`;
+          body += `- cci-sat: Cross-Chain Interoperability & Secure Asset Transfer\n`;
+          body += `- imo-eo: Intelligent Mining Operations & Energy Optimization\n\n`;
+          
+          body += `## Recommended Actions\n\n`;
+          body += `1. Review the security report above\n`;
+          body += `2. Update to the latest version when available\n`;
+          body += `3. Follow security best practices in implementation\n`;
+          body += `4. Monitor for additional security announcements\n\n`;
+          
+          body += `## Contact Information\n\n`;
+          body += `- **Security Team:** security@fusionpact.com\n`;
+          body += `- **PGP Key:** [Download Public Key](https://github.com/${context.repo.owner}/${context.repo.repo}/blob/main/docs/security/security.asc)\n`;
+          body += `- **Documentation:** [Security Policy](https://github.com/${context.repo.owner}/${context.repo.repo}/blob/main/docs/security/SECURITY.md)\n\n`;
+          
+          body += `---\n\n`;
+          body += `**Note:** This is an automated security announcement. `;
+          body += `To subscribe to security updates, watch this repository and enable notifications for issues labeled with 'security'.`;
+          
+          const issue = await github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: title,
+            body: body,
+            labels: ['security', `security-${level}`, 'announcement']
+          });
+          
+          console.log(`Created security issue: ${issue.data.html_url}`);
+          return issue.data.number;
+    
+    - name: Add subscribers to issue
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const issueNumber = ${{ steps.create-issue.outputs.result }};
+          
+          // Get all watchers/subscribers of the repository
+          const watchers = await github.rest.activity.listWatchersForRepo({
+            owner: context.repo.owner,
+            repo: context.repo.repo
+          });
+          
+          // Mention active contributors and maintainers
+          let mentions = '@fusionpact-team ';
+          
+          // Add comment to notify subscribers
+          const comment = `🔔 **Security Alert Notification**\n\n` +
+            `This security announcement has been automatically generated and ` +
+            `all repository watchers have been notified.\n\n` +
+            `${mentions}\n\n` +
+            `**To subscribe to security announcements:**\n` +
+            `1. Watch this repository\n` +
+            `2. Enable notifications for issues\n` +
+            `3. Optionally join our security mailing list by emailing security@fusionpact.com`;
+          
+          await github.rest.issues.createComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: issueNumber,
+            body: comment
+          });
+    
+    - name: Create security announcement file
+      run: |
+        mkdir -p announcements
+        cat > announcements/security-${{ steps.details.outputs.issue_number }}.md << EOF
+        # Security Announcement: ${{ steps.details.outputs.issue_number }}
+        
+        **Date:** ${{ steps.details.outputs.timestamp }}
+        **Level:** ${{ steps.details.outputs.level }}
+        **Type:** ${{ steps.details.outputs.type }}
+        
+        ## Summary
+        ${{ steps.details.outputs.message }}
+        
+        ## GitHub Issue
+        Created: Issue #${{ steps.create-issue.outputs.result }}
+        
+        ## Action Required
+        Please review the security announcement and take appropriate action.
+        
+        ---
+        This is an automated security notification from the Bitcoin Enterprise Suite.
+        EOF
+        
+    - name: Commit security announcement
+      run: |
+        git config --local user.email "security@fusionpact.com"
+        git config --local user.name "Security Bot"
+        git add announcements/
+        git commit -m "Security announcement: ${{ steps.details.outputs.issue_number }}" || exit 0
+        git push || exit 0
+
+  update-security-metrics:
+    name: Update Security Metrics
+    runs-on: ubuntu-latest
+    needs: [security-scan, notify-subscribers]
+    if: always()
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Update security metrics
+      run: |
+        mkdir -p docs/security/metrics
+        cat > docs/security/metrics/latest-scan.json << EOF
+        {
+          "timestamp": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+          "scan_result": "${{ needs.security-scan.outputs.vulnerabilities-found }}",
+          "workflow_run": "${{ github.run_id }}",
+          "commit_sha": "${{ github.sha }}",
+          "trigger": "${{ github.event_name }}"
+        }
+        EOF
+        
+    - name: Generate security dashboard
+      run: |
+        cat > docs/security/DASHBOARD.md << EOF
+        # Security Dashboard
+        
+        ## Latest Security Scan
+        
+        **Last Updated:** $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+        **Scan Status:** ${{ needs.security-scan.outputs.vulnerabilities-found == 'true' && '⚠️ Issues Found' || '✅ Clean' }}
+        **Workflow Run:** [${{ github.run_id }}](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+        
+        ## Security Subscription
+        
+        To receive automated security updates:
+        
+        1. **Watch this repository** - Click "Watch" at the top of this page
+        2. **Enable issue notifications** - Ensure notifications are enabled for issues
+        3. **Security-labeled issues** - All security announcements are labeled with 'security'
+        
+        ## Recent Security Announcements
+        
+        Check the [Issues](https://github.com/${{ github.repository }}/issues?q=label%3Asecurity) page for all security announcements.
+        
+        ## Contact
+        
+        - **Email:** security@fusionpact.com
+        - **PGP Key:** [Download](./security.asc)
+        
+        ---
+        
+        *This dashboard is automatically updated on every security scan.*
+        EOF
