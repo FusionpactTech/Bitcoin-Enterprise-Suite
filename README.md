@@ -84,6 +84,7 @@ The Bitcoin Enterprise Suite is a comprehensive collection of production-ready, 
 - **Rust 1.70+** - Install from [rustup.rs](https://rustup.rs/)
 - **Git** - For cloning the repository
 - **Docker** (optional) - For containerized development
+- **Bitcoin Node** (recommended) - For full functionality
 
 ### Installation
 
@@ -100,6 +101,55 @@ cargo test --workspace
 
 # Build documentation
 cargo doc --workspace --no-deps --open
+
+# Run security audit
+cargo audit
+```
+
+### Environment Setup
+
+Create a `.env` file for configuration:
+
+```bash
+# Bitcoin Network Configuration
+BITCOIN_NETWORK=testnet
+BITCOIN_RPC_URL=http://localhost:18332
+BITCOIN_RPC_USER=bitcoinrpc
+BITCOIN_RPC_PASSWORD=changeme123
+
+# Security Settings
+ENABLE_AUDIT_LOGGING=true
+STRICT_VALIDATION=true
+LOG_LEVEL=info
+```
+
+### Quick Example
+
+```rust
+use biscol::prelude::*;
+use bitcoin::secp256k1::Secp256k1;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    // Initialize BiSCOL
+    let secp = Secp256k1::new();
+    let config = BiSCOLConfig::from_env()?;
+    let orchestrator = ContractOrchestrator::new(config, &secp).await?;
+    
+    // Create a simple smart contract
+    let contract = SimpleContract::builder()
+        .owner_pubkey(owner_key)
+        .recipient_pubkey(recipient_key)
+        .amount(100_000) // 0.001 BTC
+        .timeout_blocks(144) // 24 hours
+        .build()?;
+    
+    // Deploy to Bitcoin network
+    let deployment = orchestrator.deploy_contract(contract).await?;
+    println!("Contract deployed: {}", deployment.txid());
+    
+    Ok(())
+}
 ```
 
 ### Using Individual Libraries
@@ -122,6 +172,7 @@ imo-eo = "0.1.0"
 - **[🔧 API References](./docs/api/README.md)** - Detailed API documentation for each library
 - **[💡 Examples](./examples/)** - Practical, runnable examples for common use cases
 - **[🛡️ Security](./docs/security/)** - Security practices, audit reports, and vulnerability disclosure
+- **[🔒 Secure Coding Practices](./docs/security/secure-coding-practices.md)** - Comprehensive security guidelines
 - **[🗺️ Development Roadmap](./docs/guides/roadmap.md)** - Public roadmap and feature tracking
 
 ### Per-Library Documentation
