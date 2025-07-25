@@ -70,7 +70,7 @@ clap = { workspace = true }
 tokio-test = "0.4"
 mockall = { workspace = true }
 proptest = { workspace = true }
-criterion = "0.5"
+criterion = "0.7"
 
 [features]
 default = ["std"]
