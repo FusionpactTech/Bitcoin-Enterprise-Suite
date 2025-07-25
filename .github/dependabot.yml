@@ -1,0 +1,128 @@
+version: 2
+updates:
+  # Enable version updates for Cargo (Rust)
+  - package-ecosystem: "cargo"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "02:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "bitcoin-enterprise-suite/security-team"
+    assignees:
+      - "bitcoin-enterprise-suite/maintainers"
+    commit-message:
+      prefix: "deps"
+      prefix-development: "deps-dev"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "security"
+    # Only security updates for production dependencies
+    target-branch: "main"
+    
+  # BiSCOL library dependencies
+  - package-ecosystem: "cargo"
+    directory: "/libs/biscol"
+    schedule:
+      interval: "daily"
+      time: "02:15"
+      timezone: "UTC"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "bitcoin-enterprise-suite/biscol-team"
+    labels:
+      - "dependencies"
+      - "biscol"
+    
+  # CCI-SAT library dependencies
+  - package-ecosystem: "cargo"
+    directory: "/libs/cci-sat"
+    schedule:
+      interval: "daily"
+      time: "02:30"
+      timezone: "UTC"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "bitcoin-enterprise-suite/cci-sat-team"
+    labels:
+      - "dependencies"
+      - "cci-sat"
+    
+  # AICRM-SDK library dependencies
+  - package-ecosystem: "cargo"
+    directory: "/libs/aicrm-sdk"
+    schedule:
+      interval: "daily"
+      time: "02:45"
+      timezone: "UTC"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "bitcoin-enterprise-suite/aicrm-team"
+    labels:
+      - "dependencies"
+      - "aicrm-sdk"
+    
+  # IMO-EO library dependencies
+  - package-ecosystem: "cargo"
+    directory: "/libs/imo-eo"
+    schedule:
+      interval: "daily"
+      time: "03:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "bitcoin-enterprise-suite/imo-eo-team"
+    labels:
+      - "dependencies"
+      - "imo-eo"
+    
+  # GitHub Actions workflow dependencies
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "03:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 3
+    reviewers:
+      - "bitcoin-enterprise-suite/devops-team"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+      
+  # Python dependencies for ML models (if any)
+  - package-ecosystem: "pip"
+    directory: "/libs/aicrm-sdk"
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "03:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 3
+    reviewers:
+      - "bitcoin-enterprise-suite/ml-team"
+    labels:
+      - "dependencies"
+      - "python"
+      - "ml-models"
+      
+  - package-ecosystem: "pip"
+    directory: "/libs/imo-eo"
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "03:15"
+      timezone: "UTC"
+    open-pull-requests-limit: 3
+    reviewers:
+      - "bitcoin-enterprise-suite/ml-team"
+    labels:
+      - "dependencies"
+      - "python"
+      - "ml-models"
