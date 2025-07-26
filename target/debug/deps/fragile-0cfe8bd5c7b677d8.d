@@ -1,0 +1,13 @@
+/workspace/target/debug/deps/fragile-0cfe8bd5c7b677d8.d: /usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/lib.rs /usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/errors.rs /usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/fragile.rs /usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/registry.rs /usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/semisticky.rs /usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/sticky.rs /usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/thread_id.rs
+
+/workspace/target/debug/deps/libfragile-0cfe8bd5c7b677d8.rlib: /usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/lib.rs /usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/errors.rs /usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/fragile.rs /usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/registry.rs /usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/semisticky.rs /usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/sticky.rs /usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/thread_id.rs
+
+/workspace/target/debug/deps/libfragile-0cfe8bd5c7b677d8.rmeta: /usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/lib.rs /usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/errors.rs /usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/fragile.rs /usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/registry.rs /usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/semisticky.rs /usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/sticky.rs /usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/thread_id.rs
+
+/usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/lib.rs:
+/usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/errors.rs:
+/usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/fragile.rs:
+/usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/registry.rs:
+/usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/semisticky.rs:
+/usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/sticky.rs:
+/usr/local/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.1/src/thread_id.rs:
