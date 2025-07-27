@@ -1,54 +1,89 @@
-[advisories]
-# Set version 2 to opt into new behavior
-version = 2
-# The path where the advisory database is cloned/fetched into
-db-path = "~/.cargo/advisory-db"
-# The url(s) of the advisory databases to use
-db-urls = ["https://github.com/rustsec/advisory-db"]
-# A list of advisory IDs to ignore
-ignore = [
-    # instant crate is unmaintained but only used in dev dependencies
-    "RUSTSEC-2024-0384",
+# Configuration for cargo-deny
+#
+# Check for security vulnerabilities, license compliance, and supply chain security
+
+[graph]
+targets = [
+    { triple = "x86_64-unknown-linux-gnu" },
+    { triple = "x86_64-apple-darwin" },
+    { triple = "aarch64-apple-darwin" },
+    { triple = "x86_64-pc-windows-msvc" },
 ]
 
 [licenses]
-# Set version 2 to opt into new behavior
 version = 2
+# The confidence threshold for detecting a license from license text
+confidence-threshold = 0.8
+
 # List of explicitly allowed licenses
 allow = [
-    "MIT",
     "Apache-2.0",
     "Apache-2.0 WITH LLVM-exception",
+    "MIT",
+    "BSD-2-Clause",
     "BSD-3-Clause",
     "ISC",
     "Unicode-3.0",
     "CC0-1.0",
+    "0BSD",
+    "BSL-1.0",
     "Zlib",
     "MITNFA",
+    "Unlicense",
 ]
-# The confidence threshold for detecting a license from license text
-confidence-threshold = 0.8
+
 # Allow 1 or more licenses on a per-crate basis
-exceptions = []
+exceptions = [
+    # r-efi has triple license including Apache-2.0 and MIT, so it's acceptable
+    { allow = ["Apache-2.0"], name = "r-efi" },
+]
 
 [bans]
 # Lint level for when multiple versions of the same crate are detected
 multiple-versions = "warn"
 # Lint level for when a crate version requirement is `*`
 wildcards = "allow"
-# The graph highlighting used when creating dotgraphs for crates
-highlight = "all"
+
 # List of crates that are allowed to have multiple versions
-allow = []
+skip = [
+    # These are allowed to have multiple versions due to ecosystem migration
+    { name = "bitcoin", version = "*" },
+    { name = "bitcoin_hashes", version = "*" },
+    { name = "bech32", version = "*" },
+    { name = "secp256k1", version = "*" },
+    { name = "secp256k1-sys", version = "*" },
+    { name = "digest", version = "*" },
+    { name = "block-buffer", version = "*" },
+    { name = "getrandom", version = "*" },
+    { name = "thiserror", version = "*" },
+    { name = "thiserror-impl", version = "*" },
+    { name = "toml", version = "*" },
+    { name = "toml_datetime", version = "*" },
+    { name = "serde_spanned", version = "*" },
+    { name = "wasi", version = "*" },
+    { name = "windows-sys", version = "*" },
+]
+
 # List of crates to deny
-deny = []
-# Certain crates/versions that will be skipped when doing duplicate detection
-skip = []
-# Similarly to `skip` allows you to skip certain crates during duplicate
-# detection. Unlike skip, it also includes the entire tree of transitive
-# dependencies starting at the specified crate, up to a certain depth, which is
-# by default infinite.
-skip-tree = []
+deny = [
+    # Crates with known security issues
+    { name = "openssl", version = "*" },  # Prefer rustls for better security
+    { name = "md5", version = "*" },      # Cryptographically broken
+    { name = "sha1", version = "*" },     # Prefer sha2 family
+]
+
+[advisories]
+version = 2
+# The path where the advisory database is cloned/fetched into
+db-path = "~/.cargo/advisory-db"
+# The url(s) of the advisory databases to use
+db-urls = ["https://github.com/rustsec/advisory-db"]
+
+# A list of advisory IDs to ignore
+ignore = [
+    # Ignore unmaintained instant crate warning (only used in dev deps via wiremock)
+    "RUSTSEC-2024-0384",
+]
 
 [sources]
 # Lint level for what to happen when a crate from a crate registry that is not
@@ -57,8 +92,13 @@ unknown-registry = "warn"
 # Lint level for what to happen when a crate from a git repository that is not
 # in the allow list is encountered
 unknown-git = "warn"
-# List of URLs for allowed crate registries. Defaults to the crates.io index
-# if not specified. If it is specified but empty, no registries are allowed.
-allow-registry = ["https://github.com/rust-lang/crates.io-index"]
-# List of URLs for allowed Git repositories
-allow-git = []
+
+# List of allowed crate registries
+allow-registry = [
+    "https://github.com/rust-lang/crates.io-index",
+]
+
+# List of allowed Git repositories
+allow-git = [
+    # Add specific git repos if needed
+]
