@@ -1,274 +1,426 @@
-# 🟠 Bitcoin Enterprise Suite
+# Gitleaks
 
-<div align="center">
+```
+┌─○───┐
+│ │╲  │
+│ │ ○ │
+│ ○ ░ │
+└─░───┘
+```
 
-[![Stars](https://img.shields.io/github/stars/FusionpactTech/Bitcoin-Enterprise-Suite?style=for-the-badge&logo=github)](https://github.com/FusionpactTech/Bitcoin-Enterprise-Suite/stargazers)
-[![Forks](https://img.shields.io/github/forks/FusionpactTech/Bitcoin-Enterprise-Suite?style=for-the-badge&logo=github)](https://github.com/FusionpactTech/Bitcoin-Enterprise-Suite/network)
-[![License](https://img.shields.io/github/license/FusionpactTech/Bitcoin-Enterprise-Suite?style=for-the-badge)](LICENSE)
-[![CI/CD](https://img.shields.io/github/actions/workflow/status/FusionpactTech/Bitcoin-Enterprise-Suite/ci.yml?style=for-the-badge&logo=github-actions)](https://github.com/FusionpactTech/Bitcoin-Enterprise-Suite/actions)
+<p align="left">
+  <p align="left">
+	  <a href="https://github.com/zricethezav/gitleaks/actions/workflows/test.yml">
+		  <img alt="Github Test" src="https://github.com/zricethezav/gitleaks/actions/workflows/test.yml/badge.svg">
+	  </a>
+	  <a href="https://hub.docker.com/r/zricethezav/gitleaks">
+		  <img src="https://img.shields.io/docker/pulls/zricethezav/gitleaks.svg" />
+	  </a>
+	  <a href="https://github.com/zricethezav/gitleaks-action">
+        	<img alt="gitleaks badge" src="https://img.shields.io/badge/protected%20by-gitleaks-blue">
+    	 </a>
+	  <a href="https://twitter.com/intent/follow?screen_name=zricethezav">
+		  <img src="https://img.shields.io/twitter/follow/zricethezav?label=Follow%20zricethezav&style=social&color=blue" alt="Follow @zricethezav" />
+	  </a>
+  </p>
+</p>
 
-[![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?style=for-the-badge&logo=discord)](https://discord.gg/ZK5n8A8B)
-[![Twitter](https://img.shields.io/badge/Twitter-Follow%20Us-1DA1F2?style=for-the-badge&logo=twitter)](https://x.com/fusionpact)
-[![Rust](https://img.shields.io/badge/Rust-1.70%2B-000000?style=for-the-badge&logo=rust)](https://www.rust-lang.org/)
-[![Bitcoin](https://img.shields.io/badge/Bitcoin-Enterprise-F7931E?style=for-the-badge&logo=bitcoin)](https://bitcoin.org)
-[![Security](https://img.shields.io/badge/Security-Audited-green?style=for-the-badge&logo=shield)](./SECURITY.md)
+### Join our Discord! [![Discord](https://img.shields.io/discord/1102689410522284044.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/8Hzbrnkr7E)
 
-</div>
+Gitleaks is a SAST tool for **detecting** and **preventing** hardcoded secrets like passwords, api keys, and tokens in git repos. Gitleaks is an **easy-to-use, all-in-one solution** for detecting secrets, past or present, in your code.
 
-**Open-source, enterprise-grade Bitcoin infrastructure libraries for the next generation of financial technology.**
+```
+➜  ~/code(master) gitleaks detect --source . -v
 
-*Powered by [Fusionpact Technologies Inc.](https://fusionpact.com) - Leading the future of Bitcoin enterprise solutions.*
+    ○
+    │╲
+    │ ○
+    ○ ░
+    ░    gitleaks
 
----
 
-## 🚀 Vision
+Finding:     "export BUNDLE_ENTERPRISE__CONTRIBSYS__COM=cafebabe:deadbeef",
+Secret:      cafebabe:deadbeef
+RuleID:      sidekiq-secret
+Entropy:     2.609850
+File:        cmd/generate/config/rules/sidekiq.go
+Line:        23
+Commit:      cd5226711335c68be1e720b318b7bc3135a30eb2
+Author:      John
+Email:       john@users.noreply.github.com
+Date:        2022-08-03T12:31:40Z
+Fingerprint: cd5226711335c68be1e720b318b7bc3135a30eb2:cmd/generate/config/rules/sidekiq.go:sidekiq-secret:23
+```
 
-The Bitcoin Enterprise Suite is a comprehensive collection of production-ready, security-first libraries designed to accelerate Bitcoin adoption in enterprise environments. Built with Rust for maximum performance and safety, our libraries provide the foundation for building scalable, secure, and compliant Bitcoin applications.
+## Getting Started
 
-## 📦 Core Libraries
+Gitleaks can be installed using Homebrew, Docker, or Go. Gitleaks is also available in binary form for many popular platforms and OS types on the [releases page](https://github.com/zricethezav/gitleaks/releases). In addition, Gitleaks can be implemented as a pre-commit hook directly in your repo or as a GitHub action using [Gitleaks-Action](https://github.com/gitleaks/gitleaks-action).
 
-### 🔐 BiSCOL - Bitcoin-Native Smart Contract Orchestration Layer
-> **Confidential smart contracts on Bitcoin with enterprise-grade privacy**
-
-- Zero-knowledge proof integration for transaction privacy
-- Multi-signature orchestration with time-locked contracts
-- Taproot-optimized script execution
-- Enterprise compliance reporting
-
-### 🌉 CCI-SAT - Cross-Chain Interoperability & Secure Asset Transfer Suite
-> **Seamless, secure asset transfers across blockchain networks**
-
-- Atomic swaps with Bitcoin, Ethereum, and other major chains
-- Lightning Network integration for instant settlements
-- Decentralized bridge protocols with fraud proofs
-- Multi-chain wallet abstraction layer
-
-### 🤖 AICRM-SDK - AI-Driven Compliance & Risk Management Platform SDK
-> **Intelligent compliance automation for Bitcoin operations**
-
-- Real-time transaction monitoring and risk scoring
-- Regulatory compliance automation (AML/KYC)
-- Suspicious activity detection with ML models
-- Audit trail generation and reporting
-
-### ⚡ IMO-EO - Intelligent Mining Operations & Energy Optimization Framework
-> **AI-powered mining efficiency and sustainable energy management**
-
-- Dynamic mining pool optimization
-- Energy consumption analytics and green mining insights
-- Predictive maintenance for mining hardware
-- Carbon footprint tracking and offset integration
-
-## 🎯 Key Features
-
-- **🔒 Security First**: All libraries undergo rigorous security audits and implement industry best practices
-- **⚡ High Performance**: Rust-native implementation with zero-copy optimizations and minimal overhead
-- **🔧 Developer Friendly**: Comprehensive APIs, detailed documentation, and extensive examples
-- **🌐 Cross-Platform**: Support for Linux, macOS, Windows, and containerized deployments
-- **📖 Well Documented**: Auto-generated API docs, architectural guides, and practical tutorials
-- **🧪 Thoroughly Tested**: Unit, integration, and end-to-end tests with >95% code coverage
-
-## 🛡️ Security & Automation
-
-- **🤖 Automated Security**: Dependabot enabled for dependency vulnerability alerts
-- **🔍 Continuous Monitoring**: Daily security scans and vulnerability assessments
-- **📋 Compliance Ready**: Built-in support for enterprise security and regulatory requirements
-- **🏗️ Secure Development**: Formal security practices with dedicated security workflows
-- **🔐 Supply Chain Security**: Signed releases, reproducible builds, and dependency validation
-- **📊 Transparent Roadmap**: Public feature tracking and community-driven development
-
-## 🏃‍♂️ Quick Start
-
-### Prerequisites
-
-- **Rust 1.70+** - Install from [rustup.rs](https://rustup.rs/)
-- **Git** - For cloning the repository
-- **Docker** (optional) - For containerized development
-- **Bitcoin Node** (recommended) - For full functionality
-
-### Installation
+### Installing
 
 ```bash
-# Clone the repository
-git clone https://github.com/bitcoin-enterprise-suite/bitcoin-enterprise-suite.git
-cd bitcoin-enterprise-suite
+# MacOS
+brew install gitleaks
 
-# Build all libraries
-cargo build --workspace
+# Docker (DockerHub)
+docker pull zricethezav/gitleaks:latest
+docker run -v ${path_to_host_folder_to_scan}:/path zricethezav/gitleaks:latest [COMMAND] --source="/path" [OPTIONS]
 
-# Run tests
-cargo test --workspace
+# Docker (ghcr.io)
+docker pull ghcr.io/gitleaks/gitleaks:latest
+docker run -v ${path_to_host_folder_to_scan}:/path ghcr.io/gitleaks/gitleaks:latest [COMMAND] --source="/path" [OPTIONS]
 
-# Build documentation
-cargo doc --workspace --no-deps --open
-
-# Run security audit
-cargo audit
+# From Source
+git clone https://github.com/gitleaks/gitleaks.git
+cd gitleaks
+make build
 ```
 
-### Environment Setup
+### GitHub Action
 
-Create a `.env` file for configuration:
+Check out the official [Gitleaks GitHub Action](https://github.com/gitleaks/gitleaks-action)
 
-```bash
-# Bitcoin Network Configuration
-BITCOIN_NETWORK=testnet
-BITCOIN_RPC_URL=http://localhost:18332
-BITCOIN_RPC_USER=bitcoinrpc
-BITCOIN_RPC_PASSWORD=changeme123
-
-# Security Settings
-ENABLE_AUDIT_LOGGING=true
-STRICT_VALIDATION=true
-LOG_LEVEL=info
+```
+name: gitleaks
+on: [pull_request, push, workflow_dispatch]
+jobs:
+  scan:
+    name: gitleaks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE}} # Only required for Organizations, not personal accounts.
 ```
 
-### Quick Example
+### Pre-Commit
 
-```rust
-use biscol::prelude::*;
-use bitcoin::secp256k1::Secp256k1;
+1. Install pre-commit from https://pre-commit.com/#install
+2. Create a `.pre-commit-config.yaml` file at the root of your repository with the following content:
 
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    // Initialize BiSCOL
-    let secp = Secp256k1::new();
-    let config = BiSCOLConfig::from_env()?;
-    let orchestrator = ContractOrchestrator::new(config, &secp).await?;
-    
-    // Create a simple smart contract
-    let contract = SimpleContract::builder()
-        .owner_pubkey(owner_key)
-        .recipient_pubkey(recipient_key)
-        .amount(100_000) // 0.001 BTC
-        .timeout_blocks(144) // 24 hours
-        .build()?;
-    
-    // Deploy to Bitcoin network
-    let deployment = orchestrator.deploy_contract(contract).await?;
-    println!("Contract deployed: {}", deployment.txid());
-    
-    Ok(())
-}
+   ```
+   repos:
+     - repo: https://github.com/gitleaks/gitleaks
+       rev: v8.16.1
+       hooks:
+         - id: gitleaks
+   ```
+
+   for a [native execution of GitLeaks](https://github.com/zricethezav/gitleaks/releases) or use the [`gitleaks-docker` pre-commit ID](https://github.com/zricethezav/gitleaks/blob/master/.pre-commit-hooks.yaml) for executing GitLeaks using the [official Docker images](#docker)
+
+3. Auto-update the config to the latest repos' versions by executing `pre-commit autoupdate`
+4. Install with `pre-commit install`
+5. Now you're all set!
+
+```
+➜ git commit -m "this commit contains a secret"
+Detect hardcoded secrets.................................................Failed
 ```
 
-### Using Individual Libraries
+Note: to disable the gitleaks pre-commit hook you can prepend `SKIP=gitleaks` to the commit command
+and it will skip running gitleaks
 
-Each library can be used independently in your `Cargo.toml`:
+```
+➜ SKIP=gitleaks git commit -m "skip gitleaks check"
+Detect hardcoded secrets................................................Skipped
+```
+
+## Usage
+
+```
+Usage:
+  gitleaks [command]
+
+Available Commands:
+  completion  generate the autocompletion script for the specified shell
+  detect      detect secrets in code
+  help        Help about any command
+  protect     protect secrets in code
+  version     display gitleaks version
+
+Flags:
+  -b, --baseline-path string       path to baseline with issues that can be ignored
+  -c, --config string              config file path
+                                   order of precedence:
+                                   1. --config/-c
+                                   2. env var GITLEAKS_CONFIG
+                                   3. (--source/-s)/.gitleaks.toml
+                                   If none of the three options are used, then gitleaks will use the default config
+      --exit-code int              exit code when leaks have been encountered (default 1)
+  -h, --help                       help for gitleaks
+  -l, --log-level string           log level (trace, debug, info, warn, error, fatal) (default "info")
+      --max-target-megabytes int   files larger than this will be skipped
+      --no-color                   turn off color for verbose output
+      --no-banner                  suppress banner
+      --redact                     redact secrets from logs and stdout
+  -f, --report-format string       output format (json, csv, junit, sarif) (default "json")
+  -r, --report-path string         report file
+  -s, --source string              path to source (default ".")
+  -v, --verbose                    show verbose output from scan
+
+Use "gitleaks [command] --help" for more information about a command.
+```
+
+### Commands
+
+There are two commands you will use to detect secrets; `detect` and `protect`.
+
+#### Detect
+
+The `detect` command is used to scan repos, directories, and files. This command can be used on developer machines and in CI environments.
+
+When running `detect` on a git repository, gitleaks will parse the output of a `git log -p` command (you can see how this executed
+[here](https://github.com/zricethezav/gitleaks/blob/7240e16769b92d2a1b137c17d6bf9d55a8562899/git/git.go#L17-L25)).
+[`git log -p` generates patches](https://git-scm.com/docs/git-log#_generating_patch_text_with_p) which gitleaks will use to detect secrets.
+You can configure what commits `git log` will range over by using the `--log-opts` flag. `--log-opts` accepts any option for `git log -p`.
+For example, if you wanted to run gitleaks on a range of commits you could use the following command: `gitleaks detect --source . --log-opts="--all commitA..commitB"`.
+See the `git log` [documentation](https://git-scm.com/docs/git-log) for more information.
+
+You can scan files and directories by using the `--no-git` option.
+
+If you want to run only specific rules you can do so by using the `--enable-rule` option (with a rule ID as a parameter), this flag can be used multiple times. For example: `--enable-rule=atlassian-api-token` will only apply that rule. You can find a list of rules [here](config/gitleaks.toml).
+
+#### Protect
+
+The `protect` command is used to scan uncommitted changes in a git repo. This command should be used on developer machines in accordance with
+[shifting left on security](https://cloud.google.com/architecture/devops/devops-tech-shifting-left-on-security).
+When running `protect` on a git repository, gitleaks will parse the output of a `git diff` command (you can see how this executed
+[here](https://github.com/zricethezav/gitleaks/blob/7240e16769b92d2a1b137c17d6bf9d55a8562899/git/git.go#L48-L49)). You can set the
+`--staged` flag to check for changes in commits that have been `git add`ed. The `--staged` flag should be used when running Gitleaks
+as a pre-commit.
+
+**NOTE**: the `protect` command can only be used on git repos, running `protect` on files or directories will result in an error message.
+
+### Creating a baseline
+
+When scanning large repositories or repositories with a long history, it can be convenient to use a baseline. When using a baseline,
+gitleaks will ignore any old findings that are present in the baseline. A baseline can be any gitleaks report. To create a gitleaks report, run gitleaks with the `--report-path` parameter.
+
+```
+gitleaks detect --report-path gitleaks-report.json # This will save the report in a file called gitleaks-report.json
+```
+
+Once as baseline is created it can be applied when running the detect command again:
+
+```
+gitleaks detect --baseline-path gitleaks-report.json --report-path findings.json
+```
+
+After running the detect command with the --baseline-path parameter, report output (findings.json) will only contain new issues.
+
+### Verify Findings
+
+You can verify a finding found by gitleaks using a `git log` command.
+Example output:
+
+```
+Finding:     aws_secret="AKIAIMNOJVGFDXXXE4OA"
+RuleID:      aws-access-token
+Secret       AKIAIMNOJVGFDXXXE4OA
+Entropy:     3.65
+File:        checks_test.go
+Line:        37
+Commit:      ec2fc9d6cb0954fb3b57201cf6133c48d8ca0d29
+Author:      Zachary Rice
+Email:       z@email.com
+Date:        2018-01-28T17:39:00Z
+Fingerprint: ec2fc9d6cb0954fb3b57201cf6133c48d8ca0d29:checks_test.go:aws-access-token:37
+```
+
+We can use the following format to verify the leak:
+
+```
+git log -L {StartLine,EndLine}:{File} {Commit}
+```
+
+So in this example it would look like:
+
+```
+git log -L 37,37:checks_test.go ec2fc9d6cb0954fb3b57201cf6133c48d8ca0d29
+```
+
+Which gives us:
+
+```
+commit ec2fc9d6cb0954fb3b57201cf6133c48d8ca0d29
+Author: zricethezav <thisispublicanyways@gmail.com>
+Date:   Sun Jan 28 17:39:00 2018 -0500
+
+    [update] entropy check
+
+diff --git a/checks_test.go b/checks_test.go
+--- a/checks_test.go
++++ b/checks_test.go
+@@ -28,0 +37,1 @@
++               "aws_secret= \"AKIAIMNOJVGFDXXXE4OA\"":          true,
+
+```
+
+## Pre-Commit hook
+
+You can run Gitleaks as a pre-commit hook by copying the example `pre-commit.py` script into
+your `.git/hooks/` directory.
+
+## Configuration
+
+Gitleaks offers a configuration format you can follow to write your own secret detection rules:
 
 ```toml
-[dependencies]
-biscol = "0.1.0"
-cci-sat = "0.1.0"
-aicrm-sdk = "0.1.0"
-imo-eo = "0.1.0"
+# Title for the gitleaks configuration file.
+title = "Gitleaks title"
+
+# Extend the base (this) configuration. When you extend a configuration
+# the base rules take precedence over the extended rules. I.e., if there are
+# duplicate rules in both the base configuration and the extended configuration
+# the base rules will override the extended rules.
+# Another thing to know with extending configurations is you can chain together
+# multiple configuration files to a depth of 2. Allowlist arrays are appended
+# and can contain duplicates.
+# useDefault and path can NOT be used at the same time. Choose one.
+[extend]
+# useDefault will extend the base configuration with the default gitleaks config:
+# https://github.com/zricethezav/gitleaks/blob/master/config/gitleaks.toml
+useDefault = true
+# or you can supply a path to a configuration. Path is relative to where gitleaks
+# was invoked, not the location of the base config.
+path = "common_config.toml"
+
+# An array of tables that contain information that define instructions
+# on how to detect secrets
+[[rules]]
+
+# Unique identifier for this rule
+id = "awesome-rule-1"
+
+# Short human readable description of the rule.
+description = "awesome rule 1"
+
+# Golang regular expression used to detect secrets. Note Golang's regex engine
+# does not support lookaheads.
+regex = '''one-go-style-regex-for-this-rule'''
+
+# Golang regular expression used to match paths. This can be used as a standalone rule or it can be used
+# in conjunction with a valid `regex` entry.
+path = '''a-file-path-regex'''
+
+# Array of strings used for metadata and reporting purposes.
+tags = ["tag","another tag"]
+
+# Int used to extract secret from regex match and used as the group that will have
+# its entropy checked if `entropy` is set.
+secretGroup = 3
+
+# Float representing the minimum shannon entropy a regex group must have to be considered a secret.
+entropy = 3.5
+
+# Keywords are used for pre-regex check filtering. Rules that contain
+# keywords will perform a quick string compare check to make sure the
+# keyword(s) are in the content being scanned. Ideally these values should
+# either be part of the idenitifer or unique strings specific to the rule's regex
+# (introduced in v8.6.0)
+keywords = [
+  "auth",
+  "password",
+  "token",
+]
+
+# You can include an allowlist table for a single rule to reduce false positives or ignore commits
+# with known/rotated secrets
+[rules.allowlist]
+description = "ignore commit A"
+commits = [ "commit-A", "commit-B"]
+paths = [
+  '''go\.mod''',
+  '''go\.sum'''
+]
+# note: (rule) regexTarget defaults to check the _Secret_ in the finding.
+# if regexTarget is not specified then _Secret_ will be used.
+# Acceptable values for regexTarget are "match" and "line"
+regexTarget = "match"
+regexes = [
+  '''process''',
+  '''getenv''',
+]
+# note: stopwords targets the extracted secret, not the entire regex match
+# like 'regexes' does. (stopwords introduced in 8.8.0)
+stopwords = [
+  '''client''',
+  '''endpoint''',
+]
+
+
+# This is a global allowlist which has a higher order of precedence than rule-specific allowlists.
+# If a commit listed in the `commits` field below is encountered then that commit will be skipped and no
+# secrets will be detected for said commit. The same logic applies for regexes and paths.
+[allowlist]
+description = "global allow list"
+commits = [ "commit-A", "commit-B", "commit-C"]
+paths = [
+  '''gitleaks\.toml''',
+  '''(.*?)(jpg|gif|doc)'''
+]
+
+# note: (global) regexTarget defaults to check the _Secret_ in the finding.
+# if regexTarget is not specified then _Secret_ will be used.
+# Acceptable values for regexTarget are "match" and "line"
+regexTarget = "match"
+
+regexes = [
+  '''219-09-9999''',
+  '''078-05-1120''',
+  '''(9[0-9]{2}|666)-\d{2}-\d{4}''',
+]
+# note: stopwords targets the extracted secret, not the entire regex match
+# like 'regexes' does. (stopwords introduced in 8.8.0)
+stopwords = [
+  '''client''',
+  '''endpoint''',
+]
 ```
 
-## 📚 Documentation
+Refer to the default [gitleaks config](https://github.com/zricethezav/gitleaks/blob/master/config/gitleaks.toml) for examples or follow the [contributing guidelines](https://github.com/gitleaks/gitleaks/blob/master/CONTRIBUTING.md) if you would like to contribute to the default configuration. Additionally, you can check out [this gitleaks blog post](https://blog.gitleaks.io/stop-leaking-secrets-configuration-2-3-aeed293b1fbf) which covers advanced configuration setups.
 
-- **[📖 Complete Documentation](./docs/README.md)** - Architecture, guides, and API references
-- **[🚀 Getting Started Guide](./docs/getting-started/README.md)** - Step-by-step setup and first integration
-- **[🏗️ Architecture Overview](./docs/architecture/overview.md)** - High-level system design and component interaction
-- **[🔧 API References](./docs/api/README.md)** - Detailed API documentation for each library
-- **[💡 Examples](./examples/)** - Practical, runnable examples for common use cases
-- **[🛡️ Security](./docs/security/)** - Security practices, audit reports, and vulnerability disclosure
-- **[🔒 Secure Coding Practices](./docs/security/secure-coding-practices.md)** - Comprehensive security guidelines
-- **[🗺️ Development Roadmap](./docs/guides/roadmap.md)** - Public roadmap and feature tracking
+### Additional Configuration
 
-### Per-Library Documentation
+#### gitleaks:allow
 
-Each library includes comprehensive documentation:
+If you are knowingly committing a test secret that gitleaks will catch you can add a `gitleaks:allow` comment to that line which will instruct gitleaks
+to ignore that secret. Ex:
 
-- **[🔐 BiSCOL Documentation](./libs/biscol/README.md)** - Smart contract orchestration
-- **[🌉 CCI-SAT Documentation](./libs/cci-sat/README.md)** - Cross-chain interoperability  
-- **[🤖 AICRM-SDK Documentation](./libs/aicrm-sdk/README.md)** - AI-driven compliance
-- **[⚡ IMO-EO Documentation](./libs/imo-eo/README.md)** - Mining operations optimization
+```
+class CustomClass:
+    discord_client_secret = '8dyfuiRyq=vVc3RRr_edRk-fK__JItpZ'  #gitleaks:allow
 
-## 🤝 Contributing
-
-We welcome contributions from the community! Please read our [Contributing Guide](./CONTRIBUTING.md) to get started.
-
-### Development Setup
-
-```bash
-# Install development dependencies
-cargo install cargo-audit cargo-tarpaulin cargo-expand
-
-# Run linting and formatting
-cargo clippy --workspace -- -D warnings
-cargo fmt --all
-
-# Run security audit
-cargo audit
-
-# Generate test coverage
-cargo tarpaulin --workspace --out Html
 ```
 
-## 🌟 Community
+#### .gitleaksignore
 
-- **[Discord](https://discord.gg/ZK5n8A8B)** - Join our developer community
-- **[GitHub Discussions](https://github.com/bitcoin-enterprise-suite/bitcoin-enterprise-suite/discussions)** - Ask questions and share ideas
-- **[Twitter](https://x.com/fusionpact)** - Follow for updates and announcements
-- **[Blog](https://blog.bitcoin-enterprise-suite.org)** - Technical articles and tutorials
+You can ignore specific findings by creating a `.gitleaksignore` file at the root of your repo. In release v8.10.0 Gitleaks added a `Fingerprint` value to the Gitleaks report. Each leak, or finding, has a Fingerprint that uniquely identifies a secret. Add this fingerprint to the `.gitleaksignore` file to ignore that specific secret. See Gitleaks' [.gitleaksignore](https://github.com/zricethezav/gitleaks/blob/master/.gitleaksignore) for an example. Note: this feature is experimental and is subject to change in the future.
 
-## 📈 Roadmap
+## Sponsorships
+<p align="left">
+	<h3><a href="https://coderabbit.ai/?utm_source=oss&utm_medium=sponsorship&utm_campaign=gitleaks">coderabbit.ai</h3>
+	  <a href="https://coderabbit.ai/?utm_source=oss&utm_medium=sponsorship&utm_campaign=gitleaks">
+		  <img alt="CodeRabbit.ai Sponsorship" src="https://github.com/gitleaks/gitleaks/assets/15034943/76c30a85-887b-47ca-9956-17a8e55c6c41" width=200>
+	  </a>
+</p>
+<p align="left">
+	  <a href="https://www.tines.com/?utm_source=oss&utm_medium=sponsorship&utm_campaign=gitleaks">
+		  <img alt="Tines Sponsorship" src="https://user-images.githubusercontent.com/15034943/146411864-4878f936-b4f7-49a0-b625-f9f40c704bfa.png" width=200>
+	  </a>
+  </p>
 
-- **Q3 2025**: BiSCOL v2.0 with advanced zero-knowledge proof optimizations and enhanced Taproot features
-- **Q4 2025**: CCI-SAT v2.0 with multi-chain bridge protocol expansion and enhanced Lightning Network scaling
-- **Q1 2026**: AICRM-SDK v2.0 with advanced AI-driven regulatory compliance automation and real-time global monitoring
-- **Q2 2026**: IMO-EO v2.0 with quantum-resistant mining algorithms and comprehensive carbon neutrality framework
 
-## 💝 Support Our Mission: Empowering Bitcoin's Future
+## Exit Codes
 
-The `bitcoin-enterprise-suite` is a testament to the power of open-source collaboration, driven by a shared vision for a more secure, scalable, and innovative Bitcoin ecosystem. Your contributions, whether through code, documentation, or financial support, directly fuel our ability to deliver cutting-edge, enterprise-grade solutions that benefit the entire industry.
+You can always set the exit code when leaks are encountered with the --exit-code flag. Default exit codes below:
 
-To help us accelerate development, maintain the highest standards of security and quality, and continue pushing the boundaries of what's possible with Bitcoin, we welcome your generous support.
-
-**Every contribution, no matter the size, makes a tangible difference.**
-
-### 🪙 Contribute Bitcoin (BTC) to our Development Fund
-
-**Bitcoin Address:** `bc1q765njarr3lqlck83fya5t4r7uldzm37plq05dq`
-
-<div align="center">
-  <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=bc1q765njarr3lqlck83fya5t4r7uldzm37plq05dq" alt="Bitcoin Donation QR Code" width="200" height="200">
-  <br>
-  <em>QR Code for easy scanning</em>
-</div>
-
-### Other Ways to Support
-
-- ⭐ **Star this repository** to increase visibility
-- 🐛 **Report bugs** and suggest improvements
-- 📝 **Contribute code** and documentation
-- 🗣️ **Spread the word** in the Bitcoin community
-- 🤝 **Partner with us** for enterprise solutions
-
----
-
-## 📄 License
-
-This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
-
-## 🔒 Security
-
-Security is our top priority. Please review our [Security Policy](./docs/security/SECURITY.md) for reporting vulnerabilities.
-
-## 📞 Support
-
-- **Enterprise Support**: [Enterprise@fusionpact.com](mailto:Enterprise@fusionpact.com)
-- **General Questions**: [Hello@fusionpact.com](mailto:Hello@fusionpact.com)
-- **Security Issues**: [Security@fusionpact.com](mailto:Security@fusionpact.com)
-
----
-
-<div align="center">
-  <strong>Built with ❤️ for the Bitcoin ecosystem by Fusionpact Technologies Inc.</strong>
-  <br>
-  <sub>Empowering enterprise Bitcoin adoption through secure, scalable infrastructure</sub>
-  <br><br>
-  <a href="https://fusionpact.com">
-    <img src="https://img.shields.io/badge/Powered%20by-Fusionpact%20Technologies%20Inc.-blue?style=for-the-badge" alt="Powered by Fusionpact Technologies Inc.">
-  </a>
-</div>
+```
+0 - no leaks present
+1 - leaks or error encountered
+126 - unknown flag
+```
