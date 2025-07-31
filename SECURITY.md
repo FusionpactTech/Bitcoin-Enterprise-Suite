@@ -45,10 +45,29 @@ For complete security information and detailed policies, please see our comprehe
 
 ## 📚 Additional Resources
 
+- **[Latest Security Audit Report](./docs/security/security-audit-2025-01.md)** - January 2025 comprehensive security assessment
 - **[Complete Security Policy](./docs/security/SECURITY.md)** - Detailed security practices and procedures
 - **[Security Architecture](./docs/architecture/security.md)** - Security design principles
-- **[Audit Reports](./docs/security/audit-reports.md)** - Third-party security audit results
+- **[Audit Reports](./docs/security/audit-reports.md)** - Historical security audit results
 - **[Cryptographic Specifications](./docs/security/cryptography.md)** - Cryptographic implementation details
+
+## 🔍 Recent Security Updates (January 2025)
+
+### ✅ Critical Vulnerabilities Resolved
+- **RUSTSEC-2024-0437**: Protobuf vulnerability fixed (upgraded to v3.7.2)
+- **Unmaintained Dependencies**: Replaced yaml-rust with serde_yaml
+- **Configuration Issues**: Fixed cargo deny configuration
+
+### 🔒 New Security Features
+- **Container Security**: Production Dockerfile with security hardening
+- **Enhanced Secret Scanning**: Bitcoin-specific pattern detection
+- **Reproducible Builds**: Deterministic build verification
+- **Trivy Integration**: Container vulnerability scanning
+
+### 📊 Current Security Status
+**Overall Rating**: A+ (95/100) ✅ SECURE
+
+For detailed findings and remediation steps, see the [latest audit report](./docs/security/security-audit-2025-01.md).
 
 ---
 

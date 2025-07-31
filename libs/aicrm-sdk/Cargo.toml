@@ -63,7 +63,7 @@ hex = { workspace = true }
 itertools = { workspace = true }
 
 # Configuration
-config = { workspace = true }
+serde_yaml = { workspace = true }
 clap = { workspace = true }
 
 [dev-dependencies]

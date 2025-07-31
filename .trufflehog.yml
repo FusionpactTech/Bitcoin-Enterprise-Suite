@@ -1,0 +1,91 @@
+# TruffleHog Configuration for Bitcoin Enterprise Suite
+# Security-focused secret detection with enterprise patterns
+
+# Global settings
+chunk_size: 10000
+concurrency: 10
+detector_timeout: "10s"
+verify_timeout: "5s"
+
+# Output configuration
+format: "json"
+include_detectors:
+  - all
+
+# Verification settings
+verify: true
+only_verified: true
+
+# Paths to scan
+include_paths:
+  - "**/*.rs"
+  - "**/*.toml"
+  - "**/*.yml"
+  - "**/*.yaml"
+  - "**/*.json"
+  - "**/*.sh"
+  - "**/*.env*"
+  - "**/Dockerfile*"
+  - "**/*.md"
+
+# Paths to exclude from scanning
+exclude_paths:
+  - "target/**"
+  - ".git/**"
+  - "**/.cargo/**"
+  - "**/node_modules/**"
+  - "**/*.lock"
+  - "**/coverage/**"
+  - "**/tmp/**"
+  - "**/vendor/**"
+
+# Exclude specific detectors prone to false positives
+exclude_detectors:
+  - "Generic"
+  - "URI"
+  - "Email"
+
+# Custom patterns for Bitcoin-specific secrets
+custom_detectors:
+  - name: "BitcoinPrivateKey"
+    regex: '[5KL][1-9A-HJ-NP-Za-km-z]{50,51}'
+    keywords:
+      - "private"
+      - "key"
+      - "bitcoin"
+      - "btc"
+    verify: false
+    
+  - name: "BitcoinWIF"
+    regex: '[5KL][1-9A-HJ-NP-Za-km-z]{50,51}|[9c][1-9A-HJ-NP-Za-km-z]{50,51}'
+    keywords:
+      - "wif"
+      - "wallet"
+      - "import"
+      - "format"
+    verify: false
+    
+  - name: "BitcoinExtendedKey"
+    regex: 'xprv[1-9A-HJ-NP-Za-km-z]{107,108}'
+    keywords:
+      - "xprv"
+      - "extended"
+      - "private"
+    verify: false
+
+# Allowlist for known false positives
+allow:
+  paths:
+    - "docs/examples/**"  # Example/demo code
+    - "**/*test*.rs"      # Test fixtures
+    - "**/README.md"      # Documentation
+  
+  contents:
+    - "example"
+    - "demo"
+    - "test"
+    - "mock"
+    - "fake"
+    - "placeholder"
+    - "TODO"
+    - "FIXME"
