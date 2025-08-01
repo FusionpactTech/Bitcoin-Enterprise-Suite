@@ -108,7 +108,8 @@ jobs:
   vulnerability-scanning:
     name: Container Vulnerability Scan
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # Run on all pushes and PRs for comprehensive security testing
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -247,7 +248,8 @@ jobs:
   reproducible-builds:
     name: Reproducible Build Verification
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # Run on all pushes and PRs for comprehensive testing
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
