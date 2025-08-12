@@ -97,7 +97,7 @@ mockall = "0.12"
 wiremock = "0.5"
 
 # Utilities
-uuid = { version = "1.6", features = ["v4", "serde"] }
+uuid = { version = "1.18", features = ["v4", "serde"] }
 chrono = { version = "0.4", features = ["serde"] }
 url = { version = "2.4", features = ["serde"] }
 hex = "0.4"
