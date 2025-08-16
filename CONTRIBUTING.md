@@ -291,7 +291,7 @@ pub fn execute_script(script: &Script, context: &ExecutionContext) -> Result<Exe
 
 ### Pull Request Template
 
-Use our [PR template](./.github/PULL_REQUEST_TEMPLATE/pull_request_template.md) which includes:
+Use our [PR template](./.github/pull_request_template.md) which includes:
 
 - **Description**: Clear explanation of changes
 - **Type**: Feature, fix, docs, etc.

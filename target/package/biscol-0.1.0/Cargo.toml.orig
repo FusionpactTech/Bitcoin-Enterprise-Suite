@@ -1,0 +1,78 @@
+[package]
+name = "biscol"
+description = "Bitcoin-Native Smart Contract Orchestration Layer - Confidential smart contracts with enterprise-grade privacy"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+keywords.workspace = true
+categories.workspace = true
+readme = "README.md"
+
+[lib]
+name = "biscol"
+path = "src/lib.rs"
+
+[dependencies]
+# Workspace dependencies
+bitcoin = { workspace = true }
+secp256k1 = { workspace = true }
+bitcoin_hashes = { workspace = true }
+bitcoinconsensus = { workspace = true }
+
+# Cryptography and ZK proofs - simplified to avoid edition2024 conflicts
+# ring = { workspace = true }
+bulletproofs = { workspace = true }
+# ark-std = { workspace = true }
+# ark-crypto-primitives = { workspace = true }
+# ark-relations = { workspace = true }
+sha2 = { workspace = true }
+# blake3 = { workspace = true }
+
+# Async and networking
+tokio = { workspace = true }
+futures = { workspace = true }
+async-trait = { workspace = true }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+bincode = { workspace = true }
+
+# Error handling
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+
+# Utilities
+hex = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+tracing = { workspace = true }
+
+[dev-dependencies]
+tokio-test = "0.4"
+proptest = { workspace = true }
+quickcheck = { workspace = true }
+criterion = "0.5"
+
+[features]
+default = ["std"]
+std = []
+taproot = []
+schnorr = []
+musig2 = []
+frost = []
+
+[[bench]]
+name = "script_execution"
+harness = false
+
+[[bench]]
+name = "taproot_operations"
+harness = false
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
