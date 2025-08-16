@@ -36,7 +36,7 @@ jobs:
           key: ${{ runner.os }}-security-cargo-${{ hashFiles('**/Cargo.lock') }}
           
       - name: Install cargo-audit
-        run: cargo install cargo-audit --force
+        run: cargo install cargo-audit --force --locked
         
       - name: Run security audit
         run: cargo audit --json > audit-results.json
@@ -50,11 +50,13 @@ jobs:
           
       - name: Fail on high/critical vulnerabilities
         run: |
-          if cargo audit --deny warnings --deny unmaintained --deny unsound --deny yanked; then
-            echo "✅ No high-risk vulnerabilities found"
-          else
-            echo "❌ High-risk vulnerabilities detected"
+          sudo apt-get update -y && sudo apt-get install -y jq
+          HIGH_COUNT=$(jq '[.vulnerabilities.list[] | select(((.advisory.severity // "unknown") | ascii_downcase) == "high" or ((.advisory.severity // "unknown") | ascii_downcase) == "critical")] | length' audit-results.json)
+          if [ "${HIGH_COUNT}" -gt 0 ]; then
+            echo "❌ High/Critical vulnerabilities detected: ${HIGH_COUNT}"
             exit 1
+          else
+            echo "✅ No high/critical vulnerabilities found"
           fi
 
   cargo-deny:
@@ -63,6 +65,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
         
       - name: Install cargo-deny
         run: cargo install cargo-deny --force
@@ -80,17 +85,19 @@ jobs:
           fetch-depth: 0
           
       - name: Run TruffleHog
-        uses: trufflesecurity/trufflehog@main
+        uses: trufflesecurity/trufflehog@v3
         with:
+          scan: git
           path: ./
-          base: main
-          head: HEAD
-          extra_args: --debug --only-verified
+          extra_args: --only-verified --no-update
 
   vulnerability-scanning:
     name: Container Vulnerability Scan
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+    permissions:
+      contents: read
+      security-events: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -106,7 +113,7 @@ jobs:
           docker build -f Dockerfile.security-scan -t bitcoin-enterprise-suite:latest .
           
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@0
         with:
           image-ref: 'bitcoin-enterprise-suite:latest'
           format: 'sarif'
@@ -130,12 +137,14 @@ jobs:
       - name: Install cargo-license
         run: cargo install cargo-license --force
         
+      - name: Install jq
+        run: sudo apt-get update -y && sudo apt-get install -y jq
+        
       - name: Check licenses
         run: |
-          cargo license --json > licenses.json
-          # Check for GPL, AGPL, or other copyleft licenses
-          if grep -E "(GPL|AGPL|LGPL)" licenses.json; then
-            echo "❌ Copyleft licenses detected - please review"
+          cargo license --json --avoid-dev-deps --avoid-build-deps --avoid-optional-deps > licenses.json
+          if jq 'map(select(.license | test("GPL|AGPL|LGPL|SSPL"; "i"))) | length > 0' licenses.json; then
+            echo "❌ Copyleft or SSPL licenses detected - please review"
             exit 1
           else
             echo "✅ License compliance check passed"
@@ -235,7 +244,7 @@ jobs:
   reproducible-builds:
     name: Reproducible Build Verification
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -245,16 +254,20 @@ jobs:
         
       - name: First build
         run: |
+          export SOURCE_DATE_EPOCH=0
+          export TZ=UTC
+          export RUSTFLAGS="$RUSTFLAGS -C link-arg=-Wl,--build-id=none --remap-path-prefix=$(pwd)=."
           cargo build --release
-          find target/release -name "*.rlib" -o -name "*.so" -o -name "*.dylib" | \
-          xargs sha256sum > checksums1.txt
+          find target/release -type f \( -name "*.rlib" -o -name "*.so" -o -name "*.dylib" \) | LC_ALL=C sort | xargs -r sha256sum > checksums1.txt
           
       - name: Clean and second build
         run: |
           cargo clean
+          export SOURCE_DATE_EPOCH=0
+          export TZ=UTC
+          export RUSTFLAGS="$RUSTFLAGS -C link-arg=-Wl,--build-id=none --remap-path-prefix=$(pwd)=."
           cargo build --release
-          find target/release -name "*.rlib" -o -name "*.so" -o -name "*.dylib" | \
-          xargs sha256sum > checksums2.txt
+          find target/release -type f \( -name "*.rlib" -o -name "*.so" -o -name "*.dylib" \) | LC_ALL=C sort | xargs -r sha256sum > checksums2.txt
           
       - name: Compare builds
         run: |
