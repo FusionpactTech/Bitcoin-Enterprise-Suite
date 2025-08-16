@@ -58,7 +58,7 @@ cbor4ii = "0.3"
 futures = "0.3"
 tokio-stream = "0.1"
 async-trait = "0.1"
-rayon = "1.8"
+rayon = "1.11"
 crossbeam = "0.8"
 
 # Database and storage
