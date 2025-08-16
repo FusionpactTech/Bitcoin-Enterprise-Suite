@@ -86,7 +86,7 @@ prometheus = "0.13"
 opentelemetry = "0.21"
 
 # Error handling
-thiserror = "1.0"
+thiserror = "2.0"
 anyhow = "1.0"
 color-eyre = "0.6"
 
