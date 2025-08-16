@@ -1,0 +1,59 @@
+# CODEOWNERS for Bitcoin Enterprise Suite
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Global code owners - these users/teams will be requested for review on all PRs
+* @bitcoin-enterprise-suite/maintainers
+
+# Security-related files require security team approval
+SECURITY.md @bitcoin-enterprise-suite/security-team @bitcoin-enterprise-suite/maintainers
+.github/workflows/security.yml @bitcoin-enterprise-suite/security-team @bitcoin-enterprise-suite/maintainers
+.github/dependabot.yml @bitcoin-enterprise-suite/security-team @bitcoin-enterprise-suite/maintainers
+deny.toml @bitcoin-enterprise-suite/security-team @bitcoin-enterprise-suite/maintainers
+docs/security/ @bitcoin-enterprise-suite/security-team @bitcoin-enterprise-suite/maintainers
+
+# CI/CD and Infrastructure files
+.github/ @bitcoin-enterprise-suite/devops-team @bitcoin-enterprise-suite/maintainers
+.github/workflows/ @bitcoin-enterprise-suite/devops-team @bitcoin-enterprise-suite/maintainers
+Dockerfile* @bitcoin-enterprise-suite/devops-team @bitcoin-enterprise-suite/maintainers
+docker-compose*.yml @bitcoin-enterprise-suite/devops-team @bitcoin-enterprise-suite/maintainers
+.dockerignore @bitcoin-enterprise-suite/devops-team @bitcoin-enterprise-suite/maintainers
+
+# Core configuration files
+Cargo.toml @bitcoin-enterprise-suite/maintainers
+Cargo.lock @bitcoin-enterprise-suite/maintainers
+rust-toolchain.toml @bitcoin-enterprise-suite/maintainers
+rustfmt.toml @bitcoin-enterprise-suite/maintainers
+clippy.toml @bitcoin-enterprise-suite/maintainers
+
+# Library-specific ownership
+libs/biscol/ @bitcoin-enterprise-suite/biscol-team @bitcoin-enterprise-suite/maintainers
+libs/cci-sat/ @bitcoin-enterprise-suite/cci-sat-team @bitcoin-enterprise-suite/maintainers
+libs/aicrm-sdk/ @bitcoin-enterprise-suite/aicrm-team @bitcoin-enterprise-suite/maintainers
+libs/imo-eo/ @bitcoin-enterprise-suite/imo-eo-team @bitcoin-enterprise-suite/maintainers
+
+# Documentation ownership
+docs/ @bitcoin-enterprise-suite/docs-team @bitcoin-enterprise-suite/maintainers
+*.md @bitcoin-enterprise-suite/docs-team
+README.md @bitcoin-enterprise-suite/maintainers @bitcoin-enterprise-suite/docs-team
+CONTRIBUTING.md @bitcoin-enterprise-suite/maintainers @bitcoin-enterprise-suite/docs-team
+CHANGELOG.md @bitcoin-enterprise-suite/maintainers @bitcoin-enterprise-suite/docs-team
+
+# Examples and tutorials
+examples/ @bitcoin-enterprise-suite/docs-team @bitcoin-enterprise-suite/maintainers
+
+# License and legal files
+LICENSE @bitcoin-enterprise-suite/maintainers
+COPYRIGHT @bitcoin-enterprise-suite/maintainers
+
+# Release and packaging
+scripts/ @bitcoin-enterprise-suite/devops-team @bitcoin-enterprise-suite/maintainers
+Makefile @bitcoin-enterprise-suite/devops-team @bitcoin-enterprise-suite/maintainers
+
+# Testing configuration
+.github/workflows/ci.yml @bitcoin-enterprise-suite/devops-team @bitcoin-enterprise-suite/maintainers
+codecov.yml @bitcoin-enterprise-suite/devops-team @bitcoin-enterprise-suite/maintainers
+
+# Development tools configuration
+.vscode/ @bitcoin-enterprise-suite/docs-team
+.gitignore @bitcoin-enterprise-suite/maintainers
+.gitattributes @bitcoin-enterprise-suite/maintainers
