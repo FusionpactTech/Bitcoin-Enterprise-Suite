@@ -36,7 +36,10 @@ jobs:
           key: ${{ runner.os }}-security-cargo-${{ hashFiles('**/Cargo.lock') }}
           
       - name: Install cargo-audit
-        run: cargo install cargo-audit --force
+        run: |
+          rustup toolchain install 1.88.0
+          rustup default 1.88.0
+          cargo install cargo-audit --force
         
       - name: Run security audit
         run: cargo audit --json > audit-results.json
@@ -65,7 +68,10 @@ jobs:
         uses: actions/checkout@v4
         
       - name: Install cargo-deny
-        run: cargo install cargo-deny --force
+        run: |
+          rustup toolchain install 1.88.0
+          rustup default 1.88.0
+          cargo install cargo-deny --force
         
       - name: Run cargo-deny
         run: cargo deny check
@@ -128,7 +134,10 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         
       - name: Install cargo-license
-        run: cargo install cargo-license --force
+        run: |
+          rustup toolchain install 1.88.0
+          rustup default 1.88.0
+          cargo install cargo-license --force
         
       - name: Check licenses
         run: |
