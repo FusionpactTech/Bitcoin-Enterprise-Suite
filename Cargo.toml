@@ -82,7 +82,10 @@ smartcore = "0.3"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
 metrics = "0.21"
-prometheus = "0.13"
+# Prometheus 0.13 pulls protobuf 2.x with known vuln RUSTSEC-2024-0437.
+# Pin to a patched forkless version by disabling default features that include proto.
+# Alternatively, upgrade to 0.14 once available. For now, use 0.13 with `protobuf` feature off.
+prometheus = { version = "0.13", default-features = false, features = ["process"] }
 opentelemetry = "0.21"
 
 # Error handling
@@ -107,7 +110,7 @@ once_cell = "1.19"
 lazy_static = "1.4"
 
 # Configuration
-config = "0.13"
+config = { version = "0.13", default-features = false, features = ["json", "toml", "ron", "ini"] }
 clap = { version = "4.4", features = ["derive", "env"] }
 dotenvy = "0.15"
 
