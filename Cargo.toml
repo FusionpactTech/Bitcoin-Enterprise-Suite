@@ -40,7 +40,7 @@ sha2 = "0.10"
 bulletproofs = "4.0"
 
 # Networking and protocols
-tokio = { version = "1.0", features = ["full"] }
+tokio = { version = "1.48", features = ["full"] }
 hyper = { version = "1.0", features = ["full"] }
 tonic = "0.10"
 prost = "0.12"
