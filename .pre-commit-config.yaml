@@ -1,0 +1,85 @@
+# Pre-commit hooks for Bitcoin Enterprise Suite
+# Install with: pre-commit install
+# Run manually: pre-commit run --all-files
+
+repos:
+  # Security checks
+  - repo: https://github.com/trufflesecurity/trufflehog
+    rev: v3.63.5
+    hooks:
+      - id: trufflehog
+        name: TruffleHog Secret Scan
+        entry: trufflehog filesystem .
+        pass_filenames: false
+        args: ['--only-verified', '--fail']
+
+  # Rust formatting
+  - repo: local
+    hooks:
+      - id: cargo-fmt
+        name: Cargo Format
+        entry: cargo fmt --all --
+        language: system
+        files: '\.rs$'
+        pass_filenames: false
+
+      - id: cargo-clippy
+        name: Cargo Clippy
+        entry: cargo clippy --all-targets --all-features -- -D warnings
+        language: system
+        files: '\.rs$'
+        pass_filenames: false
+
+      - id: cargo-check
+        name: Cargo Check
+        entry: cargo check --all
+        language: system
+        files: '\.rs$|Cargo\.toml$|Cargo\.lock$'
+        pass_filenames: false
+
+  # YAML/TOML validation
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-yaml
+        args: ['--unsafe']
+      - id: check-toml
+      - id: check-json
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: mixed-line-ending
+      - id: check-added-large-files
+        args: ['--maxkb=1000']
+      - id: detect-private-key
+
+  # Dockerfile linting
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.12.0
+    hooks:
+      - id: hadolint-docker
+        name: Hadolint Dockerfile Linting
+        entry: hadolint
+        language: docker_image
+        types: [dockerfile]
+
+  # Shell script linting
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.9.0.6
+    hooks:
+      - id: shellcheck
+        name: Shellcheck
+        files: '\.sh$'
+
+  # Markdown linting
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.37.0
+    hooks:
+      - id: markdownlint
+        args: ['--config', '.markdownlint.yml', '--ignore', 'target/**']
+
+# Configuration
+default_language_version:
+  python: python3
+default_stages: [commit]
+fail_fast: false
+verbose: true

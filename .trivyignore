@@ -1,0 +1,16 @@
+# Trivy ignore file for Bitcoin Enterprise Suite
+# Format: CVE-ID or Package pattern
+
+# Known false positives or accepted risks
+# Add specific CVEs here if needed after review
+
+# Ignore test dependencies vulnerabilities
+*test*
+*mock*
+*dev*
+
+# Ignore specific low-risk vulnerabilities (example format)
+# CVE-2022-12345
+
+# Ignore vulnerabilities in specific packages that are not used in production
+# pkg:cargo/dev-dependency@*
