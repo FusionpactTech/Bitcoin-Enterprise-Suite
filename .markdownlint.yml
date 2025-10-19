@@ -1,0 +1,36 @@
+# Markdown linting configuration
+default: true
+
+# Line length
+MD013:
+  line_length: 120
+  heading_line_length: 80
+  code_blocks: false
+  tables: false
+
+# Heading style
+MD003:
+  style: "atx"
+
+# List style
+MD004:
+  style: "dash"
+
+# Allow inline HTML
+MD033: false
+
+# Allow bare URLs
+MD034: false
+
+# First line should be a heading
+MD041: false
+
+# No hard tabs
+MD010: true
+
+# No trailing spaces
+MD009: true
+
+# Allow duplicate headings
+MD024:
+  siblings_only: true

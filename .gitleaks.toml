@@ -1,0 +1,67 @@
+# Gitleaks configuration file for Bitcoin Enterprise Suite
+
+title = "Bitcoin Enterprise Suite Gitleaks Configuration"
+
+# Extend the base configuration
+[extend]
+useDefault = true
+
+# Additional rules specific to cryptocurrency projects
+[[rules]]
+id = "bitcoin-private-key"
+description = "Bitcoin Private Key"
+regex = '''(?i)(bitcoin|btc).*key.*[:=]\s*[\'"]?([5KL][1-9A-HJ-NP-Za-km-z]{50,51})[\'"]?'''
+tags = ["key", "bitcoin", "cryptocurrency"]
+
+[[rules]]
+id = "bitcoin-wif"
+description = "Bitcoin WIF (Wallet Import Format)"
+regex = '''[5KL][1-9A-HJ-NP-Za-km-z]{50,51}'''
+tags = ["key", "bitcoin", "wif"]
+
+[[rules]]
+id = "bitcoin-seed-phrase"
+description = "Bitcoin BIP39 Seed Phrase"
+regex = '''(?i)(seed|mnemonic|phrase).*[:=]\s*[\'"]([a-z]+\s+){11,23}[a-z]+[\'"]'''
+tags = ["seed", "bitcoin", "bip39"]
+
+[[rules]]
+id = "ethereum-private-key"
+description = "Ethereum Private Key"
+regex = '''(?i)(ethereum|eth).*key.*[:=]\s*[\'"]?(0x)?[a-fA-F0-9]{64}[\'"]?'''
+tags = ["key", "ethereum", "cryptocurrency"]
+
+# Custom allowlist patterns
+[[rules.allowlist]]
+description = "Allow test keys in test files"
+regex = '''test|spec|mock'''
+regexTarget = "match"
+
+[[rules.allowlist]]
+description = "Allow example keys in documentation"
+paths = ["docs/**", "examples/**", "*.md"]
+regexTarget = "match"
+
+# Global allowlist
+[allowlist]
+description = "Global allowlist"
+paths = [
+    "target/**",
+    "*.lock",
+    "**/*.lock",
+    "vendor/**",
+    "node_modules/**",
+    ".git/**"
+]
+
+# Files to always scan regardless of allowlist
+[include]
+paths = [
+    "**/*.rs",
+    "**/*.toml",
+    "**/*.yml",
+    "**/*.yaml",
+    "**/*.sh",
+    "**/*.env*",
+    "**/Dockerfile*"
+]

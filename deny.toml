@@ -25,6 +25,10 @@ db-urls = ["https://github.com/rustsec/advisory-db"]
 vulnerability = "deny"
 # The lint level for unmaintained crates
 unmaintained = "warn"
+# Allow security issues with these severities
+allow = []
+# Deny security issues with these severities
+severity-threshold = "low"
 # The lint level for crates that have been yanked from their source registry
 yanked = "deny"
 # The lint level for crates with security notices
@@ -67,12 +71,20 @@ deny = [
 copyleft = "deny"
 # Some crates don't have (easily) machine readable licensing information,
 # adding a clarification or license text here can help
+# Clarifications for crates with unclear licensing
 [[licenses.clarify]]
 name = "ring"
-# SPDX identifier for the license
 expression = "MIT AND ISC AND OpenSSL"
 license-files = [
     { path = "LICENSE", hash = 0xbd0eed23 }
+]
+
+# Allow Unicode license which is commonly used
+[[licenses.clarify]]
+name = "unicode-ident"
+expression = "Unicode-DFS-2016 OR MIT OR Apache-2.0"
+license-files = [
+    { path = "LICENSE-UNICODE", hash = 0x3fb01745 }
 ]
 
 [bans]
@@ -85,7 +97,15 @@ wildcards = "allow"
 highlight = "all"
 # List of crates that are allowed. Use with care!
 allow = [
-    #{ name = "ansi_term", version = "=0.11.0" },
+    # Allow multiple versions during transition periods
+    { name = "windows-sys" },
+    { name = "windows_aarch64_gnullvm" },
+    { name = "windows_aarch64_msvc" },
+    { name = "windows_i686_gnu" },
+    { name = "windows_i686_msvc" },
+    { name = "windows_x86_64_gnu" },
+    { name = "windows_x86_64_gnullvm" },
+    { name = "windows_x86_64_msvc" },
 ]
 # List of crates to deny
 deny = [
@@ -120,5 +140,4 @@ allow-registry = ["https://github.com/rust-lang/crates.io-index"]
 # List of URLs for allowed Git repositories
 allow-git = [
     # Add trusted git repositories here if needed
-    # "https://github.com/bitcoin/bitcoin",
 ]
