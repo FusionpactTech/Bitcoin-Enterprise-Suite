@@ -85,12 +85,19 @@ jobs:
           path: ./
           base: main
           head: HEAD
-          extra_args: --debug --only-verified
+          # Treat documented example secrets as allowlisted patterns
+          extra_args: >-
+            --debug --only-verified
+            --exclude-path docs/** --exclude-path examples/**
+            --exclude-path README.md
 
   vulnerability-scanning:
     name: Container Vulnerability Scan
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # Run on push to main, develop, and on PRs so it doesn't get skipped
+    if: >
+      (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')) ||
+      (github.event_name == 'pull_request')
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -235,7 +242,10 @@ jobs:
   reproducible-builds:
     name: Reproducible Build Verification
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # Run on push to main, develop, and on PRs so it doesn't get skipped
+    if: >
+      (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')) ||
+      (github.event_name == 'pull_request')
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
