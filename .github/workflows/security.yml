@@ -35,11 +35,21 @@ jobs:
             target/
           key: ${{ runner.os }}-security-cargo-${{ hashFiles('**/Cargo.lock') }}
           
-      - name: Install cargo-audit
-        run: cargo install cargo-audit --force
+      - name: Install cargo-audit (best-effort)
+        run: cargo install cargo-audit --force || echo "cargo-audit install failed, will fallback to cargo-deny"
+
+      - name: Install cargo-deny (fallback)
+        run: cargo install cargo-deny --version 0.17.0 --locked
         
-      - name: Run security audit
-        run: cargo audit --json > audit-results.json
+      - name: Run security audit (audit or deny advisories)
+        run: |
+          if command -v cargo-audit >/dev/null 2>&1; then
+            cargo audit --json > audit-results.json || true
+          else
+            cargo deny check advisories || true
+            # Optional JSON output is not available in this pinned version; artifact may be empty
+            : > audit-results.json
+          fi
         continue-on-error: true
         
       - name: Upload audit results
@@ -50,11 +60,16 @@ jobs:
           
       - name: Fail on high/critical vulnerabilities
         run: |
-          if cargo audit --deny warnings --deny unmaintained --deny unsound --deny yanked; then
-            echo "✅ No high-risk vulnerabilities found"
+          if command -v cargo-audit >/dev/null 2>&1; then
+            if cargo audit --deny warnings --deny unmaintained --deny unsound --deny yanked; then
+              echo "✅ No high-risk vulnerabilities found"
+            else
+              echo "❌ High-risk vulnerabilities detected"
+              exit 1
+            fi
           else
-            echo "❌ High-risk vulnerabilities detected"
-            exit 1
+            # Fallback to cargo-deny advisories; nonzero exit indicates advisories present
+            cargo deny check advisories
           fi
 
   cargo-deny:

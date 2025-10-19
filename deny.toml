@@ -35,9 +35,7 @@ allow = [
     "0BSD",
 ]
 confidence-threshold = 0.8
-exceptions = [
-    { allow = ["Apache-2.0", "MIT"], crate = "r-efi@5.3.0", reason = "LGPL-2.1-or-later is an OR option; project consumes via permissive terms only" }
-]
+exceptions = []
 
 [[licenses.clarify]]
 crate = "ring"
